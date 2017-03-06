@@ -1,12 +1,33 @@
 @import "normaliz";
-body{
-  color: #525252;
+html{
+  font-size: 16px;
 }
-.tabbar{
+body{
+  position: absolute;
+  width: 100%;
+  color: #525252;
+  background: @border-color;
+}
+#app{
+  position: relative;
+  margin: 0 auto;
+  min-height: 100%;
+  max-width: 750px;
+  background: #fff;
+}
+.flex {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+}
+.flex-fit{
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+.tabbar{
   flex-wrap: nowrap;
   position: fixed;
   bottom: 0;
@@ -14,13 +35,9 @@ body{
   min-width: 320px;
   max-width: 750px;
   border-top: 1px solid @border-color;
-
+  font-size: 12px;
   .tabbar-item{
     display: block;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
     text-align: center;
     padding: 3px 0;
     color: @gray-color;
@@ -44,10 +61,6 @@ body{
 }
 
 header{
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   flex-wrap: nowrap;
   align-items: center;
   position: fixed;
@@ -56,6 +69,7 @@ header{
   width: 100%;
   min-width: 320px;
   max-width: 750px;
+  border-bottom: 1px solid @border-color;
   overflow: hidden;
 
   &.bg{
@@ -66,14 +80,6 @@ header{
     height: 24px;
   }
   .search{
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
     flex-wrap: nowrap;
     align-items: center;
     background: #fff;
@@ -93,10 +99,6 @@ header{
       padding: 8px;
     }
     .search-text{
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-      -ms-flex: 1;
-      flex: 1;
       height: 100%;
       border: none;
       margin: 0 10px;
@@ -106,5 +108,59 @@ header{
   .btn-chat{
     display: block;
     padding: 10px 16px;
+  }
+  .header-btn {
+    width: 100px;
+
+    &.header-right .btn-chat{
+      float: right;
+      padding: 10px;
+      margin-right: 6px;
+    }
+  }
+  .header-title {
+    text-align: center;
+  }
+}
+
+.page-content {
+  position: relative;
+  padding-top: 56px;
+}
+.profile-cover {
+  height: 125px;
+  background: url("../pics/profile_bg.jpeg") center 45% no-repeat;
+  background-size: cover;
+  color: #ffffff;
+  .profile-wrapper{
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .25);
+  }
+  .profile-avatar{
+    margin-left: 20px;
+    margin-right: 16px;
+    width: 4.375rem;
+    height: 4.375rem;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    overflow: hidden;
+    img{
+      width: inherit;
+      height: inherit;
+    }
+  }
+  .profile-info{
+    h1, p{
+      line-height: 1.5;
+    }
+    .profile-desc{
+      padding-bottom: 8px;
+    }
+    .profile-fans{
+      padding-top: 8px;
+      border-top: 1px solid #fff;
+    }
   }
 }

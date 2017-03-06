@@ -1,5 +1,5 @@
 <template>
-  <a class="tabbar-item" :class="{'active': isActive}" @click="goToRouter">
+  <a class="tabbar-item flex-fit" :class="{'active': isActive}" @click="goToRouter">
     <span class="tabbar-item-icon" v-show="!isActive"><slot name="icon-normal"></slot></span>
     <span class="tabbar-item-icon" v-show="isActive"><slot name="icon-active"></slot></span>
     <span class="tabbar-item-text"><slot></slot></span>

@@ -2,18 +2,23 @@
 html{
   font-size: 16px;
 }
+@media screen and (max-width: 320px){
+  html {
+    font-size: 12px;
+  }
+}
 body{
   position: absolute;
   width: 100%;
   color: #525252;
-  background: @border-color;
+  background: #607D8B;
 }
 #app{
   position: relative;
   margin: 0 auto;
   min-height: 100%;
   max-width: 750px;
-  background: #fff;
+  background: @background-gray;
 }
 .flex {
   display: -webkit-box;
@@ -27,6 +32,11 @@ body{
   -ms-flex: 1;
   flex: 1;
 }
+.icon-img{
+  display: block;
+  width: 24px;
+  height: 24px;
+}
 .tabbar{
   flex-wrap: nowrap;
   position: fixed;
@@ -34,6 +44,7 @@ body{
   width:100%;
   min-width: 320px;
   max-width: 750px;
+  background: #ffffff;
   border-top: 1px solid @border-color;
   font-size: 12px;
   .tabbar-item{
@@ -69,15 +80,12 @@ header{
   width: 100%;
   min-width: 320px;
   max-width: 750px;
+  background: #fff;
   border-bottom: 1px solid @border-color;
   overflow: hidden;
-
+  z-index: 99;
   &.bg{
     background: @green-color;
-  }
-  .icon-img{
-    width: 24px;
-    height: 24px;
   }
   .search{
     flex-wrap: nowrap;
@@ -94,6 +102,9 @@ header{
       border: none;
       background: none;
       text-align: center;
+      .icon-img{
+        margin: 0 auto;
+      }
     }
     .search-scan{
       padding: 8px;
@@ -126,6 +137,7 @@ header{
 .page-content {
   position: relative;
   padding-top: 56px;
+  padding-bottom: 48px;
 }
 .profile-cover {
   height: 125px;
@@ -141,10 +153,10 @@ header{
   .profile-avatar{
     margin-left: 20px;
     margin-right: 16px;
-    width: 4.375rem;
-    height: 4.375rem;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    border: 1px solid #fff;
+    border: 2px solid #fff;
     overflow: hidden;
     img{
       width: inherit;
@@ -161,6 +173,49 @@ header{
     .profile-fans{
       padding-top: 8px;
       border-top: 1px solid #fff;
+
+      span {
+        margin-right: 16px;
+      }
+    }
+  }
+}
+.profile-notice{
+  margin: 15px 0;
+  padding: 0 15px;
+  align-items: center;
+  line-height: 24px;
+  background: #ffffff;
+  .profile-notice-tab{
+    padding: 14px 0;
+    border-bottom: 1px solid @border-color;
+
+    p{
+      padding-left: 10px;
+    }
+  }
+  .profile-notice-tip{
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+    color: @gray-font-color;
+  }
+}
+
+.profile-tab{
+  background: #fff;
+
+  .profile-tab-list{
+    padding: 1.5rem 10px;
+    border-bottom: 1px solid @border-color;
+    li{
+      width: 25%;
+      text-align: center;
+      line-height: 30px;
+      font-size: 13px;
+      .icon-img{
+        margin: 0 auto;
+      }
     }
   }
 }

@@ -13,7 +13,7 @@
                     </div>
                     <div class="profile-info flex-fit">
                         <h1>葳蕤</h1>
-                        <p class="profile-desc">人知名至 人随己愿</p>
+                        <p class="profile-desc">人之命至 人随己愿</p>
                         <p class="profile-fans"><span>关注 35</span><span>被关注 8 </span></p>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
                 <div class="profile-notice-tab flex">
                     <img class="icon-img" src="../assets/images/ic_mine_notification.png">
                     <p class="flex-fit">提醒</p>
-                    <img class="icon-img icon-right" src="../assets/images/ic_mine_notification.png">
+                    <img class="icon-img icon-right-arrow" src="../assets/images/ic_seti_arrow_right_gray.png">
                 </div>
                 <p class="profile-notice-tip">暂无提醒</p>
             </div>

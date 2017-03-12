@@ -24,7 +24,7 @@
                     <p class="flex-fit">提醒</p>
                     <img class="icon-img icon-right-arrow" src="../assets/images/ic_seti_arrow_right_gray.png">
                 </div>
-                <p class="profile-notice-tip">暂无提醒</p>
+                <p class="profile-notice-tip">暂无新提醒</p>
             </div>
             <div class="profile-tab">
                 <ul class="profile-tab-list flex">

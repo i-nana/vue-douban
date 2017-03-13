@@ -13,9 +13,6 @@
 </template>
 <script>
 	import mHeader from '../components/header'
-	import Vue from 'vue'
-	import VueResource from 'vue-resource';
-	Vue.use(VueResource);
 	export default {
 		name: 'subject',
 		components: {
@@ -31,8 +28,8 @@
 		},
 		methods: {
 			fetchData() {
-				this.$http.jsonp('https://api.douban.com/v2/movie/in_theaters').then(response => {
-console.log(response.body);
+				this.$http.get('/api/movie/in_theaters').then(response => {
+console.log(response);
 				}, response => {
 					// error callback
 				});

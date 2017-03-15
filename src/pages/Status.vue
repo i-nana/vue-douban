@@ -115,6 +115,41 @@
                     </a>
                 </div>
             </section>
+            <section class="tab-status" v-for="(item, index) in statusData">
+                <a class="section-header status-header flex">
+                    <img class="status-avatar" :src="item.user.profile_image_url">
+                    <div class="status-user flex-fit">
+                        <h4>{{ item.user.screen_name}}</h4>
+                        <p>{{ item.source}}</p>
+                    </div>
+                    <p class="status-time">{{ item.created_at}}</p>
+                    <img class="icon-img icon-more" src="../assets/images/ic_more_action_overflow.png">
+                </a>
+                <div class="section-body">
+                    <p class="status-text" v-html="item.text"></p>
+                    <div class="media" v-if="item.pics">
+                        <div class="media-pics clear flex" @click="onThumbnailsClick"
+                             :class="{'media-pics-2': [1,2,4].indexOf(item.pics.length) > -1}">
+                            <figure v-for="(pic, j) in item.pics">
+                                <div :data-href="pic.large.url" :data-size="pic.large.geo.width + 'x' + pic.large.geo.height" itemprop="contentUrl">
+                                    <div class="media-pics-box" :style="'background-image:url(' + pic.url+ ')'"></div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-footer tab-status-btns flex">
+                    <a href="javascript: void(0);" class="tab-status-btn flex-fit">
+                        <img class="icon-img" src="../assets/images/ic_vote_normal_large.png">
+                    </a>
+                    <a href="javascript: void(0);" class="tab-status-btn flex-fit">
+                        <img class="icon-img" src="../assets/images/ic_reply_large.png">
+                    </a>
+                    <a href="javascript: void(0);" class="tab-status-btn flex-fit">
+                        <img class="icon-img" src="../assets/images/ic_reshare_large.png">
+                    </a>
+                </div>
+            </section>
         </div>
         <m-photoswipe></m-photoswipe>
     </div>
@@ -124,13 +159,26 @@
 	import mPhotoswipe from '../components/photoswipe'
 	import PhotoSwipe from '../assets/photoswipe/photoswipe.min.js'
 	import PhotoSwipeUI_Default from '../assets/photoswipe/photoswipe-ui-default.min.js'
+    import WeiboData from '../assets/weibo.json'
+
 	export default {
 		name: 'status',
 		components: {
 			mHeader,
             mPhotoswipe
 		},
+		data() {
+			return {
+				statusData: []
+			}
+		},
+        created(){
+            this.fetchData();
+        },
         methods: {
+	        fetchData(){
+		        this.statusData = WeiboData;
+            },
 	        onThumbnailsClick(e) {
 		        function closest(el, fn) {
 			        return el && ( fn(el) ? el : closest(el.parentNode, fn) );
@@ -186,7 +234,7 @@
 					        item = {
 						        src: linkEl.getAttribute('data-href'),
                                 w: size[0],
-                                h: size[0],
+                                h: size[1],
                                 el: figureEl
 					        };
 					        if(linkEl.children.length > 0) {
@@ -199,7 +247,7 @@
 				        focus: false,
 				        shareEl: false,
 				        tapToClose: true,
-				        bgOpacity: 0.85,
+				        bgOpacity: 0.65,
 				        index: picIndex,
 				        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 				        getThumbBoundsFn: function(index) {

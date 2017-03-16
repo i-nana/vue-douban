@@ -37,22 +37,24 @@
                     </div>
                 </div>
                 <div class="section-body">
-                    <div class="slides-scroll">
-                        <a class="slides-scroll-item" href="#">
-                            <img src="../assets/pics/file-group-0.png">
-                        </a>
-                        <a class="slides-scroll-item" href="#">
-                            <img src="../assets/pics/file-group-1.png">
-                        </a>
-                        <a class="slides-scroll-item" href="#">
-                            <img src="../assets/pics/file-group-2.png">
-                        </a>
-                        <a class="slides-scroll-item" href="#">
-                            <img src="../assets/pics/file-group-3.png">
-                        </a>
-                        <a class="slides-scroll-item" href="#">
-                            <img src="../assets/pics/file-group-4.png">
-                        </a>
+                    <div class="group-slides-scroll">
+                        <div class="slides-scroll">
+                            <a class="slides-scroll-item" href="#">
+                                <img src="../assets/pics/file-group-0.png">
+                            </a>
+                            <a class="slides-scroll-item" href="#">
+                                <img src="../assets/pics/file-group-1.png">
+                            </a>
+                            <a class="slides-scroll-item" href="#">
+                                <img src="../assets/pics/file-group-2.png">
+                            </a>
+                            <a class="slides-scroll-item" href="#">
+                                <img src="../assets/pics/file-group-3.png">
+                            </a>
+                            <a class="slides-scroll-item" href="#">
+                                <img src="../assets/pics/file-group-4.png">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </section>

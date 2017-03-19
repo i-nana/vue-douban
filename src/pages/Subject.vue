@@ -69,6 +69,65 @@
                     </div>
                 </div>
             </section>
+            <section class="tab-movies">
+                <div class="section-header">
+                    <h3>精选榜单</h3>
+                </div>
+                <div class="section-body">
+                    <div class="h-scroll-box">
+                        <div class="h-scroll">
+                            <a class="movies-rank-item" href="javascript: void(0);">
+                                <h3>豆瓣 Top250</h3>
+                                <p>8分以上好电影</p>
+                                <div class="movies-rank-posters movie-item">
+                                    <div class="movie-poster movie-poster-1"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
+                                    <div class="movie-poster movie-poster-2"
+                                         style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2395733377.jpg);"></div>
+                                    <div class="movie-poster movie-poster-3"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2361744534.jpg);"></div>
+                                </div>
+                            </a>
+                            <a class="movies-rank-item movies-rank-item-week" href="javascript: void(0);">
+                                <h3>本周口碑榜</h3>
+                                <p>3月10日 - 3月17日</p>
+                                <div class="movies-rank-posters movie-item">
+                                    <div class="movie-poster movie-poster-1"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
+                                    <div class="movie-poster movie-poster-2"
+                                         style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2395733377.jpg);"></div>
+                                    <div class="movie-poster movie-poster-3"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2361744534.jpg);"></div>
+                                </div>
+                            </a>
+                            <a class="movies-rank-item movies-rank-item-new" href="javascript: void(0);">
+                                <h3>新片榜</h3>
+                                <p>3月10日 - 3月17日</p>
+                                <div class="movies-rank-posters movie-item">
+                                    <div class="movie-poster movie-poster-1"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
+                                    <div class="movie-poster movie-poster-2"
+                                         style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2395733377.jpg);"></div>
+                                    <div class="movie-poster movie-poster-3"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2361744534.jpg);"></div>
+                                </div>
+                            </a>
+                            <a class="movies-rank-item movies-rank-item-top" href="javascript: void(0);">
+                                <h3>票房榜</h3>
+                                <p>票房最高排名</p>
+                                <div class="movies-rank-posters movie-item">
+                                    <div class="movie-poster movie-poster-1"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
+                                    <div class="movie-poster movie-poster-2"
+                                         style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2395733377.jpg);"></div>
+                                    <div class="movie-poster movie-poster-3"
+                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2361744534.jpg);"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </template>
@@ -108,7 +167,7 @@
 	}
 </script>
 <style lang="less">
-    section.tab-hot-movie .section-body{
+    section .section-body{
         padding-right: 0;
         padding-bottom: 10px;
         overflow-y: hidden;
@@ -158,5 +217,60 @@
                  }
             }
     }
+    }
+
+/* ********* */
+    .movies-rank-item{
+        display: inline-block;
+        margin-right: 10px;
+        width: 160px;
+        height: 150px;
+        background: linear-gradient(to bottom, #e1a01a, rgba(255, 196, 108, 0.2));
+        color: #fff;
+        border-radius: 4px;
+        overflow: hidden;
+        text-align: center;
+        &.movies-rank-item-week{
+             background: linear-gradient(to bottom, #22bc61, rgba(34, 188, 97, 0.2));
+         }
+        &.movies-rank-item-new{
+             background: linear-gradient(to bottom, #a367c4, rgba(163, 103, 196, 0.2));
+         }
+        &.movies-rank-item-top{
+             background: linear-gradient(to bottom, #e56c87, rgba(229, 108, 135, 0.2));
+         }
+    }
+    .movies-rank-posters.movie-item{
+        position: relative;
+        display: block;
+        margin: 6px auto;
+        width: 140px;
+    }
+    .movies-rank-item {
+        h3 {
+            padding-top: 15px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        p{
+            font-size: 12px;
+        }
+    }
+    .movie-poster.movie-poster-3{
+        position: absolute;
+        width: 60px;
+        margin-left: -32px;
+        left: 50%;
+    }
+    .movie-poster.movie-poster-2,
+    .movie-poster.movie-poster-1{
+        width: 46px;
+        margin-top: 10px;
+    }
+    .movie-poster.movie-poster-2{
+        float: right;
+    }
+    .movie-poster.movie-poster-1{
+        float: left;
     }
 </style>

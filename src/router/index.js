@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '../pages/Index'
-import Subject from '../pages/Subject'
-import Status from '../pages/Status'
-import Group from '../pages/Group'
-import Profile from '../pages/Profile'
+import Index from '../pages/Index/Index'
+import Subject from '../pages/Subject/Subject'
+import Status from '../pages/Status/Status'
+import Group from '../pages/Group/Group'
+import Profile from '../pages/Profile/Profile'
 
 Vue.use(Router);
 

@@ -2,10 +2,10 @@
     <div>
         <m-header title="书影音">
             <a class="btn-chat" href="javascript:void(0);" slot="right">
-                <img class="icon-img" src="../assets/images/ic_chat_green.png">
+                <img class="icon-img" src="../../assets/images/ic_chat_green.png">
             </a>
             <a class="btn-chat" href="javascript:void(0);" slot="right">
-                <img class="icon-img" src="../assets/images/ic_actionbar_search_icon.png">
+                <img class="icon-img" src="../../assets/images/ic_actionbar_search_icon.png">
             </a>
         </m-header>
         <div class="page-content">
@@ -13,7 +13,7 @@
                 <div class="section-header flex">
                     <h3 class="flex-fit">影院热映</h3>
                     <div class="tab-btns">
-                        <a class="flex" href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../assets/images/ic_arrow_green_right.png"></a>
+                        <a class="flex" href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
                     </div>
                 </div>
                 <div class="section-body">
@@ -49,7 +49,7 @@
                 <div class="section-header flex">
                     <h3 class="flex-fit">院线即将上映</h3>
                     <div class="tab-btns">
-                        <a class="flex" href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../assets/images/ic_arrow_green_right.png"></a>
+                        <a class="flex" href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
                     </div>
                 </div>
                 <div class="section-body">
@@ -138,7 +138,7 @@
     </div>
 </template>
 <script>
-	import mHeader from '../components/header'
+	import mHeader from '../../components/header'
 	export default {
 		name: 'subject',
 		components: {
@@ -250,13 +250,13 @@
             float: left;
             height: 11px;
             width: 55px;
-            background: url("../assets/images/rating_star_large_off.png") repeat-x;
+            background: url("../../assets/images/rating_star_large_off.png") repeat-x;
             background-size: 11px 11px;
             margin-right: 4px;
             margin-top: 1px;
             .rating-star-on {
                 display: block;
-                background: url("../assets/images/rating_star_large_on.png") repeat-x;
+                background: url("../../assets/images/rating_star_large_on.png") repeat-x;
                 background-size: 11px 11px;
                 height: 11px;
             }

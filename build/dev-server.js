@@ -21,6 +21,22 @@ var autoOpenBrowser = !!config.dev.autoOpenBrowser
 var proxyTable = config.dev.proxyTable
 
 var app = express()
+
+// 添加静态数据路由
+
+var recommendFeed = require('../src/assets/json/recommend_feed.json');
+var apiRouters = express.Router();
+apiRouters.get('/recommend_feed', function(req, res){
+  res.json({
+    data: recommendFeed
+  });
+});
+
+app.use('/api', apiRouters);
+
+// END 静态数据路由
+
+
 var compiler = webpack(webpackConfig)
 
 var devMiddleware = require('webpack-dev-middleware')(compiler, {

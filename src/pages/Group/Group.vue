@@ -65,14 +65,14 @@
                     <h3>最近更新</h3>
                 </div>
                 <ul class="section-body group-list">
-                    <li>
+                    <li v-for="(item, index) in joinedGroups">
                         <a href="#" class="flex group-list-item">
-                            <img class="group-avatar" src="../../assets/pics/group-01.jpg">
-                            <span class="group-name flex-fit">☞和手账有关的那些事❤</span>
-                            <span class="group-update-num">999+条更新</span>
+                            <img class="group-avatar" :src="item.avatar">
+                            <span class="group-name flex-fit">{{ item.name }}</span>
+                            <span class="group-update-num">{{ item.unread_count_str }}条更新</span>
                         </a>
                     </li>
-                    <li>
+                    <!--<li>
                         <a href="#" class="flex group-list-item">
                             <img class="group-avatar" src="../../assets/pics/group-10.jpg">
                             <span class="group-name flex-fit">家有萌宠我是铲屎官</span>
@@ -99,7 +99,7 @@
                             <p class="group-name flex-fit">爱生活！爱家居！爱艺术！</p>
                             <div class="group-update-num">32条更新</div>
                         </a>
-                    </li>
+                    </li>-->
                 </ul>
             </section>
             <section class="tab-normal">
@@ -191,11 +191,24 @@
 </template>
 <script>
 	import mHeader from '../../components/header'
-
+    import joinedGroups from '../../assets/json/joined_groups.json'
 	export default {
 		name: 'group',
 		components: {
 			mHeader
+		},
+        data(){
+			return {
+                joinedGroups: joinedGroups.groups
+			}
+        },
+		created() {
+            this.fetchData();
+        },
+        methods: {
+            fetchData(){
+                console.log(joinedGroups);
+            },
 		}
 	}
 </script>

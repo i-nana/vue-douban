@@ -159,7 +159,7 @@
 	import mPhotoswipe from '../../components/photoswipe'
 	import PhotoSwipe from '../../assets/photoswipe/photoswipe.min.js'
 	import PhotoSwipeUI_Default from '../../assets/photoswipe/photoswipe-ui-default.min.js'
-    import WeiboData from '../../assets/weibo.json'
+    import WeiboData from '../../assets/json/weibo.json'
 
 	export default {
 		name: 'status',

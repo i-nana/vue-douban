@@ -78,17 +78,24 @@
                     </li>
                 </ul>
             </div>
-
-        </div>
+        </div>  
+        <tabbar v-model="select"></tabbar>
     </div>
 </template>
 <script>
 	import mHeader from '../../components/header'
+    import tabbar from '../../components/tabbar'
 
 	export default {
 		name: 'profile',
 		components: {
-			mHeader
-		}
+			mHeader,
+            tabbar
+		},
+        data(){
+            return {
+                select: 'profile'
+            }
+        }
 	}
 </script>

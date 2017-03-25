@@ -11,7 +11,7 @@
         <div class="page-content">
             <section id="hot-movie" class="tab-movies tab-hot-movie">
                 <div class="section-header flex">
-                    <h3 class="flex-fit">影院热映</h3>
+                    <h4 class="flex-fit">影院热映</h4>
                     <div class="tab-btns">
                         <a class="flex" href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
                     </div>
@@ -35,7 +35,7 @@
                                 <a href="javascript:void(0);">
                                     <div class="movie-poster movie-poster-empty">
                                         <div class="movie-item-total">
-                                            <h5>全部</h5>
+                                            <h6>全部</h6>
                                             <p>{{ hotMovies.total }}部</p>
                                         </div>
                                     </div>
@@ -47,7 +47,7 @@
             </section>
             <section id="soon-movie" class="tab-movies tab-hot-movie">
                 <div class="section-header flex">
-                    <h3 class="flex-fit">院线即将上映</h3>
+                    <h4 class="flex-fit">院线即将上映</h4>
                     <div class="tab-btns">
                         <a class="flex" href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
                     </div>
@@ -65,7 +65,7 @@
                                 <a href="javascript:void(0);">
                                     <div class="movie-poster movie-poster-empty">
                                         <div class="movie-item-total">
-                                            <h5>全部</h5>
+                                            <h6>全部</h6>
                                             <p>{{ soonMovies.total }}部</p>
                                         </div>
                                     </div>
@@ -77,13 +77,13 @@
             </section>
             <section class="tab-movies">
                 <div class="section-header">
-                    <h3>精选榜单</h3>
+                    <h4>精选榜单</h4>
                 </div>
                 <div class="section-body">
                     <div class="h-scroll-box">
                         <div class="h-scroll">
                             <a class="movies-rank-item" href="javascript: void(0);">
-                                <h3>豆瓣 Top250</h3>
+                                <h4>豆瓣 Top250</h4>
                                 <p>8分以上好电影</p>
                                 <div class="movies-rank-posters movie-item">
                                     <div class="movie-poster movie-poster-1"
@@ -95,7 +95,7 @@
                                 </div>
                             </a>
                             <a class="movies-rank-item movies-rank-item-week" href="javascript: void(0);">
-                                <h3>本周口碑榜</h3>
+                                <h4>本周口碑榜</h4>
                                 <p>3月10日 - 3月17日</p>
                                 <div class="movies-rank-posters movie-item">
                                     <div class="movie-poster movie-poster-1"
@@ -107,7 +107,7 @@
                                 </div>
                             </a>
                             <a class="movies-rank-item movies-rank-item-new" href="javascript: void(0);">
-                                <h3>新片榜</h3>
+                                <h4>新片榜</h4>
                                 <p>3月10日 - 3月17日</p>
                                 <div class="movies-rank-posters movie-item">
                                     <div class="movie-poster movie-poster-1"
@@ -119,7 +119,7 @@
                                 </div>
                             </a>
                             <a class="movies-rank-item movies-rank-item-top" href="javascript: void(0);">
-                                <h3>票房榜</h3>
+                                <h4>票房榜</h4>
                                 <p>票房最高排名</p>
                                 <div class="movies-rank-posters movie-item">
                                     <div class="movie-poster movie-poster-1"
@@ -135,17 +135,21 @@
                 </div>
             </section>
         </div>
+        <tabbar v-model="select"></tabbar>
     </div>
 </template>
 <script>
 	import mHeader from '../../components/header'
+    import tabbar from '../../components/tabbar'
 	export default {
 		name: 'subject',
 		components: {
-			mHeader
+			mHeader,
+            tabbar
 		},
 		data(){
 			return {
+                select: 'subject',
 				hotMovies: [],
                 soonMovies: [],
 			}
@@ -175,11 +179,8 @@
 <style lang="less">
     .tab-movies .section-body{
         padding-right: 0;
+        padding-left: 0;
         overflow-y: hidden;
-        .h-scroll-box{
-            margin-bottom: -30px;
-            overflow: hidden;
-        }
     }
 
     .movie-item{
@@ -292,7 +293,7 @@
         width: 130px;
     }
     .movies-rank-item {
-        h3 {
+        h4 {
             padding-top: 15px;
             font-weight: bold;
             line-height: 1.2;

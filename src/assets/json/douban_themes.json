@@ -1,0 +1,138 @@
+[
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432441.png",
+        "poster": "http://wx1.sinaimg.cn/thumb300/942b94fdly1fdomz3fdbkj20o10gsk9t.jpg",
+        "uri": "douban://douban.com/selection/theme/5",
+        "id": "5",
+        "name": "每日荐书",
+        "desc": "每天一本值得读的好书。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432254.png",
+        "uri": "douban://douban.com/selection/theme/6",
+        "poster": "http://wx2.sinaimg.cn/thumb300/61ca8acdly1fcvky1upt8j20go0cigp7.jpg",
+        "id": "6",
+        "name": "周末去哪儿",
+        "desc": "为你推荐有趣的活动、展览、演出……周末不愁没去处。"
+    },
+    {
+        "icon_url": "https://img1.doubanio.com/img/files/file-1469432479.png",
+        "uri": "douban://douban.com/selection/theme/9",
+        "poster": "http://wx4.sinaimg.cn/thumb300/e5980bf4gy1fd8c7s4910j20u011hgpv.jpg",
+        "id": "9",
+        "name": "眼界",
+        "desc": "从图片中看世界。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469430893.png",
+        "uri": "douban://douban.com/selection/theme/10",
+        "poster": "http://wx3.sinaimg.cn/mw690/e5980bf4ly1fbqf6ab4ruj20u00u0afo.jpg",
+        "id": "10",
+        "name": "今晚我有空",
+        "desc": "综述一周电视和网络节目，帮你度过愉快的空闲时光。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432351.png",
+        "uri": "douban://douban.com/selection/theme/11",
+        "poster": "http://wx3.sinaimg.cn/thumb300/699132e6ly1fdvq5a97pdg20bw06onpe.gif",
+        "id": "11",
+        "name": "豆瓣观影club",
+        "desc": "好看的电影、有趣的影评、深度盘点的专题和新鲜资讯。"
+    },
+    {
+        "icon_url": "https://img1.doubanio.com/img/files/file-1469432537.png",
+        "poster": "http://wx1.sinaimg.cn/thumb300/a520418aly1fduhl86yaoj20jg0pw40i.jpg",
+        "uri": "douban://douban.com/selection/theme/12",
+        "id": "12",
+        "name": "本周影院在映",
+        "desc": "又到周末！影院都有哪些电影在映？哪部电影最值得看？"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432320.png",
+        "uri": "douban://douban.com/selection/theme/14",
+        "poster": "http://wx3.sinaimg.cn/thumb300/8285c85egy1fdglscbaytj215o1qmnhz.jpg",
+        "id": "14",
+        "name": "摄影有温度",
+        "desc": "一组图片和它背后的故事。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432604.png",
+        "uri": "douban://douban.com/selection/theme/15",
+        "poster": "http://wx4.sinaimg.cn/thumb300/6e8d23d0gy1fdtfbuzuu4j21eb23hhbs.jpg",
+        "id": "15",
+        "name": "一周热门影视",
+        "desc": "包括热门电影榜、热门电视剧榜、热门综艺榜。数据来自豆瓣用户的评分。"
+    },
+    {
+        "icon_url": "https://img1.doubanio.com/img/files/file-1469432288.png",
+        "uri": "douban://douban.com/selection/theme/17",
+        "poster": "http://wx4.sinaimg.cn/mw690/e5980bf4ly1fb3fvvfa1ej20dw0dwq3n0.jpg",
+        "id": "17",
+        "name": "广播精选",
+        "desc": "豆瓣用户们分享的趣事逸闻，奇思妙想。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432501.png",
+        "uri": "douban://douban.com/selection/theme/18",
+        "poster": "http://ww3.sinaimg.cn/thumb300/61ca8acdgw1fbuku59w9wj20ch0goacj.jpg",
+        "id": "18",
+        "name": "视频精选",
+        "desc": "为你推荐优秀短片，三五分钟，妙趣横生。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469430805.png",
+        "uri": "douban://douban.com/selection/theme/19",
+        "poster": "http://wx4.sinaimg.cn/thumb300/76d01ee0gy1fdi3lkpcisj20hn09sq66.jpg",
+        "id": "19",
+        "name": "豆瓣音乐周刊",
+        "desc": "介绍一周乐坛大事，推荐几首好歌。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469791931.png",
+        "uri": "douban://douban.com/selection/theme/20",
+        "poster": "http://wx3.sinaimg.cn/mw690/e5980bf4ly1fb3etqdabxj20l90lodjh0.jpg",
+        "id": "20",
+        "name": "周二读小说",
+        "desc": "周二为你推荐原创短篇小说，引人入胜，轻松易读。"
+    },
+    {
+        "icon_url": "https://img1.doubanio.com/img/files/file-1477380129.png",
+        "uri": "douban://douban.com/selection/theme/21",
+        "poster": "http://wx2.sinaimg.cn/mw690/e5980bf4gy1fdr48fdsaij20bt0bt75w.jpg",
+        "id": "21",
+        "name": "自我研习所",
+        "desc": "从今天起，与自己和平相处吧。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1470815941.png",
+        "uri": "douban://douban.com/selection/theme/22",
+        "poster": "http://ww1.sinaimg.cn/thumb300/005zv2Nlgw1eo14x116blj30cs09xaaf.jpg",
+        "id": "22",
+        "name": "玩家",
+        "desc": "带你发现那些有趣的人和事。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1478598845.png",
+        "uri": "douban://douban.com/selection/theme/23",
+        "poster": "http://ww2.sinaimg.cn/mw690/e5980bf4gw1fabpsahtzgj20sg0sgq8c.jpg",
+        "id": "23",
+        "name": "爱美丽",
+        "desc": "护肤、美妆、穿搭、消费……有品质的时尚指南。"
+    },
+    {
+        "icon_url": "https://img3.doubanio.com/img/files/file-1469432441.png",
+        "uri": "douban://douban.com/selection/theme/24",
+        "poster": "http://wx3.sinaimg.cn/thumb300/942b94fdly1fdomzi76uxj20o10h37qj.jpg",
+        "id": "24",
+        "name": "一周热门图书",
+        "desc": "每周为你推荐豆瓣上最热门的图书"
+    },
+    {
+        "icon_url": "https://img5.doubanio.com/img/files/file-1478598816.png",
+        "uri": "douban://douban.com/selection/theme/25",
+        "poster": "http://wx2.sinaimg.cn/mw690/e5980bf4ly1fb4jbrsfeaj20u00u0ten0.jpg",
+        "id": "25",
+        "name": "生活家",
+        "desc": "你可以过得更精致。"
+    }
+]

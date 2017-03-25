@@ -23,7 +23,7 @@
                 <a class="section-header status-header flex">
                     <img class="status-avatar" src="../../assets/pics/avatar_1.png">
                     <div class="status-user flex-fit">
-                        <h4>豆芽</h4>
+                        <h5>豆芽</h5>
                         <p>想看这部电影</p>
                     </div>
                     <p class="status-time">18小时前</p>
@@ -35,7 +35,7 @@
                         <div class="status-share-poster"
                              style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2228888107.jpg)"></div>
                         <div class="status-share-info flex-fit">
-                            <h4>明月守护者 Mune, le gardien de la lune (2014)</h4>
+                            <h5>明月守护者 Mune, le gardien de la lune (2014)</h5>
                             <p class="">豆瓣评分：8.3</p>
                             <p>亚历山大·西伯恩（导演）/奥玛·赛/伊兹雅·海格林/迈克尔·格雷戈里奥/动画/法国</p>
                         </div>
@@ -57,7 +57,7 @@
                 <a class="section-header status-header flex">
                     <img class="status-avatar" src="../../assets/pics/avatar_1.png">
                     <div class="status-user flex-fit">
-                        <h4>豆芽</h4>
+                        <h5>豆芽</h5>
                     </div>
                     <p class="status-time">18小时前</p>
                     <img class="icon-img icon-more" src="../../assets/images/ic_more_action_overflow.png">
@@ -95,7 +95,7 @@
                 <a class="section-header status-header flex">
                     <img class="status-avatar" src="../../assets/pics/avatar_1.png">
                     <div class="status-user flex-fit">
-                        <h4>豆芽</h4>
+                        <h5>豆芽</h5>
                     </div>
                     <p class="status-time">18小时前</p>
                     <img class="icon-img icon-more" src="../../assets/images/ic_more_action_overflow.png">
@@ -119,7 +119,7 @@
                 <a class="section-header status-header flex">
                     <img class="status-avatar" :src="item.user.profile_image_url">
                     <div class="status-user flex-fit">
-                        <h4>{{ item.user.screen_name}}</h4>
+                        <h5>{{ item.user.screen_name}}</h5>
                         <p>{{ item.source}}</p>
                     </div>
                     <p class="status-time">{{ item.created_at}}</p>
@@ -151,11 +151,13 @@
                 </div>
             </section>
         </div>
-        <m-photoswipe></m-photoswipe>
+        <m-photoswipe></m-photoswipe>  
+        <tabbar v-model="select"></tabbar>
     </div>
 </template>
 <script>
 	import mHeader from '../../components/header'
+    import tabbar from '../../components/tabbar'
 	import mPhotoswipe from '../../components/photoswipe'
 	import PhotoSwipe from '../../assets/photoswipe/photoswipe.min.js'
 	import PhotoSwipeUI_Default from '../../assets/photoswipe/photoswipe-ui-default.min.js'
@@ -165,10 +167,12 @@
 		name: 'status',
 		components: {
 			mHeader,
-            mPhotoswipe
+            mPhotoswipe,
+            tabbar
 		},
 		data() {
 			return {
+                select: 'status',
 				statusData: []
 			}
 		},

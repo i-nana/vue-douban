@@ -63,6 +63,7 @@
                 width: 25.6%;
                 float: right;
                 margin-left: 20px;
+                margin-top: 6px;
                 img{
                     width: 100%;
                 }
@@ -91,7 +92,7 @@
                     display: block;
                     position: absolute;
                     top: 0;
-                    width: 32px;
+                    width: 24px;
                     height: 1px;
                     background: #ccc;
                 }
@@ -100,6 +101,7 @@
                 }
             }
             .item-pics{
+                margin-top: 6px;
                 .item-pic-big{
                     -webkit-box-flex: 3.2;
                     -webkit-flex: 3.2;

@@ -24,11 +24,18 @@ var app = express()
 
 // 添加静态数据路由
 
-var recommendFeed = require('../src/assets/json/recommend_feed.json');
 var apiRouters = express.Router();
+var recommendFeed = require('../src/assets/json/recommend_feed_0325.json');
 apiRouters.get('/recommend_feed', function(req, res){
   res.json({
     data: recommendFeed
+  });
+});
+
+var themes = require('../src/assets/json/douban_themes.json');
+apiRouters.get('/themes', function(req, res){
+  res.json({
+    data: themes
   });
 });
 

@@ -1,41 +1,47 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Index from '../pages/Index/Index'
-import Subject from '../pages/Subject/Subject'
-import Status from '../pages/Status/Status'
-import Group from '../pages/Group/Group'
-import Profile from '../pages/Profile/Profile'
+import App from '../App'
 
-Vue.use(Router);
+// 【路由懒加载】将组建按组分块
+const Index = r => require.ensure([], () => r(require('../pages/Index/Index')), 'Index')
+const Subject = r => require.ensure([], () => r(require('../pages/Subject/Subject')), 'Subject')
+const Status = r => require.ensure([], () => r(require('../pages/Status/Status')), 'Status')
+const Group = r => require.ensure([], () => r(require('../pages/Group/Group')), 'Group')
+const Profile = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'Profile')
+const Themes = r => require.ensure([], () => r(require('../pages/Index/Themes')), "Themes")
 
-export default new Router({
-  routes: [
+export default [{
+  path: '/',
+  component: App, //顶层路由，对应index.html
+  children: [
     {
       path: '/',
-      name: 'Index',
+      name: 'index',
       component: Index
     }, {
       path: '/subject',
-      name: 'Subject',
+      name: 'subject',
       component: Subject
     }, {
       path: '/status',
-      name: 'Status',
+      name: 'status',
       component: Status
     }, {
       path: '/group',
-      name: 'Group',
+      name: 'group',
       component: Group
     }, {
       path: '/profile',
-      name: 'Profile',
+      name: 'profile',
       component: Profile
     }, {
       path: 'Index',
       redirect: '/'
     }, {
+      path: '/themes',
+      name: 'themes',
+      component: Themes
+    }, {
       path: '*',
       redirect: '/'
     }
   ]
-})
+}];

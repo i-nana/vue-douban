@@ -29,7 +29,7 @@
             </div>
             <section class="tab-normal tab-slide">
                 <div class="section-header">
-                    <h3>精选小组</h3>
+                    <h4>精选小组</h4>
                     <div class="tab-btns">
                         <a href="javascript: void(0);" class="tab-btn-right">
                             <img class="icon-img icon-group-more" src="../../assets/images/ic_groups_more.png">
@@ -62,7 +62,7 @@
             <section class="tab-normal">
                 <p class="tab-title">我的小组</p>
                 <div class="section-header">
-                    <h3>最近更新</h3>
+                    <h4>最近更新</h4>
                 </div>
                 <ul class="section-body group-list">
                     <li v-for="(item, index) in joinedGroups">
@@ -104,7 +104,7 @@
             </section>
             <section class="tab-normal">
                 <div class="section-header">
-                    <h3>我常去的</h3>
+                    <h4>我常去的</h4>
                 </div>
                 <ul class="section-body group-list">
                     <li>
@@ -186,19 +186,23 @@
                     </li>
                 </ul>
             </section>
-        </div>
+        </div>    
+        <tabbar v-model="select"></tabbar>
     </div>
 </template>
 <script>
 	import mHeader from '../../components/header'
+    import tabbar from '../../components/tabbar'
     import joinedGroups from '../../assets/json/joined_groups.json'
 	export default {
 		name: 'group',
 		components: {
-			mHeader
+			mHeader,
+            tabbar
 		},
         data(){
 			return {
+                select: 'group',
                 joinedGroups: joinedGroups.groups
 			}
         },

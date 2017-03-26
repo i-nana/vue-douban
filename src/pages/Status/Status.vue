@@ -252,6 +252,7 @@
 				        shareEl: false,
 				        tapToClose: true,
 				        bgOpacity: 0.65,
+                        showHideOpacity: true,
 				        index: picIndex,
 				        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
 				        getThumbBoundsFn: function(index) {

@@ -59,8 +59,8 @@
             </div>
             <div class="recommend-section recommend-discover">
                 <h5 class="recommend-section-title">发现
-                    <a href="javascript:void(0);" class="more-link">更多栏目
-                    <img class="icon-img icon-right-arrow" src="../../assets/images/ic_seti_arrow_right_gray.png"></a>
+                    <router-link to="/themes" class="more-link">更多栏目
+                    <img class="icon-img icon-right-arrow" src="../../assets/images/ic_seti_arrow_right_gray.png"></router-link>
                 </h5>
                 <div class="h-scroll-box">
                     <div class="h-scroll">

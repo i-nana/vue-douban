@@ -5,17 +5,7 @@
 </template>
 
 <script>
-  export default{
-    name: 'app',
-    components: {
-      //tabbar
-    },
-    data() {
-      return {
-        //select: 'index'
-      }
-    }
-
-  }
+export default {
+}
 </script>
 

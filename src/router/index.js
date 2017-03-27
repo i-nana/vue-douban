@@ -11,42 +11,36 @@ const Demo = r => require.ensure([], () => r(require('../pages/Index/Demo')), "D
 
 export default [{
   path: '/',
-  component: App, //顶层路由，对应index.html
-  children: [
-    {
-      path: '/',
-      name: 'index',
-      component: Index
-    }, {
-      path: '/subject',
-      name: 'subject',
-      component: Subject
-    }, {
-      path: '/status',
-      name: 'status',
-      component: Status
-    }, {
-      path: '/group',
-      name: 'group',
-      component: Group
-    }, {
-      path: '/profile',
-      name: 'profile',
-      component: Profile
-    }, {
-      path: 'Index',
-      redirect: '/'
-    }, {
-      path: '/themes',
-      name: 'themes',
-      component: Themes
-    },  {
-      path: '/demo',
-      name: 'demo',
-      component: Demo
-    }, {
-      path: '*',
-      redirect: '/'
-    }
-  ]
+  name: 'index',
+  component: Index
+}, {
+  path: '/subject',
+  name: 'subject',
+  component: Subject
+}, {
+  path: '/status',
+  name: 'status',
+  component: Status
+}, {
+  path: '/group',
+  name: 'group',
+  component: Group
+}, {
+  path: '/profile',
+  name: 'profile',
+  component: Profile
+}, {
+  path: 'Index',
+  redirect: '/'
+}, {
+  path: '/themes',
+  name: 'themes',
+  component: Themes
+}, {
+  path: '/demo',
+  name: 'demo',
+  component: Demo
+}, {
+  path: '*',
+  redirect: '/'
 }];

@@ -41,8 +41,12 @@
         height: 100%;
         .swipe-list-item{
             position: absolute;
-
+            height: 100%;
+            > a{
+                display: block;
+            }
             .swipe-img{
+                display: block;
                 width: 100%;
                 height: auto;
             }

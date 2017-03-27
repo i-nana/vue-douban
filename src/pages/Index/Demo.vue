@@ -6,7 +6,7 @@
             </a>
         </m-header>
         <div class="page-content page-no-footer">
-            <swipe :imgs="imgs" :swipeHeight="'50%'"></swipe>
+            <swipe :imgs="imgs" :swipeHeight="'34.167%'"></swipe>
         </div>
     </div>
 </template>

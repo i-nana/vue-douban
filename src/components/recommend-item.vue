@@ -28,7 +28,12 @@
 </template>
 <script>
 export default {
-     props: ['author', 'data']
+     props: {
+         data:{
+            type: Object,
+            default: {}
+        }
+     }
 }
 </script>
 <style lang="less">

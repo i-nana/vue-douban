@@ -7,6 +7,7 @@ const Status = r => require.ensure([], () => r(require('../pages/Status/Status')
 const Group = r => require.ensure([], () => r(require('../pages/Group/Group')), 'Group')
 const Profile = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'Profile')
 const Themes = r => require.ensure([], () => r(require('../pages/Index/Themes')), "Themes")
+const Demo = r => require.ensure([], () => r(require('../pages/Index/Demo')), "Demo")
 
 export default [{
   path: '/',
@@ -39,6 +40,10 @@ export default [{
       path: '/themes',
       name: 'themes',
       component: Themes
+    },  {
+      path: '/demo',
+      name: 'demo',
+      component: Demo
     }, {
       path: '*',
       redirect: '/'

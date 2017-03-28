@@ -6,7 +6,7 @@
             </a>
         </m-header>
         <div class="page-content page-no-footer">
-            <swipe :imgs="imgs" :swipeHeight="'34.167%'"></swipe>
+            <swipe :imgs="imgs" :swipeHeight="'46.667%'"></swipe>
         </div>
     </div>
 </template>
@@ -22,20 +22,23 @@
         data() {
             return {
                 imgs: [{
-                    src: "http://ww1.sinaimg.cn/large/9ad31e86gw1euk1t7ads3j21hc0u0177.jpg",
+                    src: "https://img3.doubanio.com/img/files/file-1484564483.jpg",
                     href: "/"
                 }, {
-                    src: "http://ww2.sinaimg.cn/large/9ad31e86jw1f1fh6wuduzj21hc0u0tlg.jpg",
+                    src: "https://img3.doubanio.com/img/files/file-1490094734.jpg",
                     href: "/"
                 }, {
-                    src: "http://ww3.sinaimg.cn/large/9ad31e86gw1euk1symylij21hc0u01cc.jpg",
+                    src: "https://img3.doubanio.com/img/files/file-1490351662.jpg",
                     href: "/"
                 }, {
-                    src: "http://ww4.sinaimg.cn/large/9ad31e86gw1euk1soc7yej21hc0u0q7o.jpg",
-                    href: "/"
-                }, {
-                    src: "http://ww4.sinaimg.cn/large/9ad31e86gw1evrzc8u1mvj21hc0u0n5s.jpg",
-                    href: "/"
+                    src: "https://img3.doubanio.com/img/files/file-1489029352.jpg",
+                    href: '/'
+                // }, {
+                //     src: "https://img1.doubanio.com/view/status/median/public/1eEzgk.jpg",
+                //     href: "/"
+                // }, {
+                //     src: "https://img3.doubanio.com/view/freyr_page_photo/raw/public/1392.jpg",
+                //     href: "/"
                 }]
             }
         }

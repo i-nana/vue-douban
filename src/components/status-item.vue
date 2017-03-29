@@ -1,27 +1,28 @@
 <template>
     <div>
         <section class="tab-status"
-                 v-for="(item, index) in data.items">
+                 v-for="(item, index) in data.items"
+                 :key="item.id">
             <a class="section-header status-header flex">
                 <img class="status-avatar"
-                     :src="item.status.author.avatar">
+                     :src="item.author.avatar">
                 <div class="status-user flex-fit">
-                    <h5>{{ item.status.author.name}}</h5>
-                    <p>{{ item.status.activity }}</p>
+                    <h5>{{ item.author.name}}</h5>
+                    <p>{{ item.activity }}</p>
                 </div>
-                <p class="status-time">{{ item.status.create_time }}</p>
+                <p class="status-time">{{ item.create_time }}</p>
                 <img class="icon-img icon-more"
                      src="../assets/images/ic_more_action_overflow.png">
             </a>
             <div class="section-body">
                 <p class="status-text"
-                   v-html="item.status.text"></p>
+                   v-html="item.text"></p>
                 <div class="media"
-                     v-if="item.status.images && item.status.images.length > 0">
+                     v-if="item.images && item.images.length > 0">
                     <div class="media-pics clear flex"
                          @click="onThumbnailsClick"
-                         :class="{'media-pics-2': [1,2,4].indexOf(item.status.images.length) > -1}">
-                        <figure v-for="(pic, j) in item.status.images">
+                         :class="{'media-pics-2': [1,2,4].indexOf(item.images.length) > -1}">
+                        <figure v-for="(pic, j) in item.images">
                             <div :data-href="pic.large.url"
                                  :data-size="pic.large.width + 'x' + pic.large.height"
                                  itemprop="contentUrl">
@@ -31,15 +32,37 @@
                         </figure>
                     </div>
                 </div>
-                <div class="status-share flex"
-                     v-else-if="item.status.card"
-                     :class=" item.status.card.rating ? 'status-share-movie' : 'status-share-book'">
+                <div class="status-share flex status-share-movie"
+                     v-else-if="item.card">
                     <div class="status-share-poster"
-                         v-if="item.status.card.image && item.status.card.image.normal" :style="'background-image: url(' + item.status.card.image.large.url + ')'"></div>
+                         v-if="item.card.image && item.card.image.normal"
+                         :style="'background-image: url(' + item.card.image.large.url + ')'"></div>
                     <div class="status-share-info flex-fit">
-                        <h5>{{item.status.card.title}}</h5>
-                        <p>豆瓣评分：{{item.status.card.rating}}</p>
-                        <p>{{item.status.card.subtitle}}</p>
+                        <h5>{{item.card.title}}</h5>
+                        <p>豆瓣评分：{{item.card.rating}}</p>
+                        <p>{{item.card.subtitle}}</p>
+                    </div>
+                </div>
+                <div class="status-reshare"
+                     v-else-if="item.reshared_status">
+                    <p class="status-text">
+                        <a href="javascript: void(0);">@{{item.reshared_status.author.name}}</a>
+                        <span v-html="item.reshared_status.text"></span>
+                    </p>
+                    <div class="media"
+                         v-if="item.reshared_status.images && item.reshared_status.images.length > 0">
+                        <div class="media-pics clear flex"
+                             @click="onThumbnailsClick"
+                             :class="{'media-pics-2': [1,2,4].indexOf(item.reshared_status.images.length) > -1}">
+                            <figure v-for="(pic, j) in item.reshared_status.images">
+                                <div :data-href="pic.large.url"
+                                     :data-size="pic.large.width + 'x' + pic.large.height"
+                                     itemprop="contentUrl">
+                                    <div class="media-pics-box"
+                                         :style="'background-image:url(' + pic.normal.url+ ')'"></div>
+                                </div>
+                            </figure>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -63,7 +86,10 @@
         </section>
     </div>
 </template>
+
 <script>
+import PhotoSwipe from '../assets/photoswipe/photoswipe.min.js'
+import PhotoSwipeUI_Default from '../assets/photoswipe/photoswipe-ui-default.min.js'
 export default {
     props: {
         data: {
@@ -158,7 +184,6 @@ export default {
                             rect = thumbnail.getBoundingClientRect();
                         return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
                     }
-
                 };
                 gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
                 gallery.init();

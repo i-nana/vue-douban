@@ -20,6 +20,7 @@
 import mHeader from '../../components/header'
 import swipe from '../../components/swipe'
 import weibo from '../../assets/json/weibo.json'
+import statusData from '../../assets/json/status/home_timeline.json'
 export default {
     name: 'test',
     components: {
@@ -57,6 +58,7 @@ export default {
             var arr = [];
             var initData = function(wb){
                 var pubtime = wb.created_at.slice(0, 1) === '2' ? wb.created_at : '2017-' + wb.created_at;
+                var text = wb.text.replace(/\s\s+/g, ' ');
                 var status = {
                     "reshares_count": wb.reposts_count,
                     "liked": false,
@@ -106,6 +108,9 @@ export default {
                 };
                 arr.push(status);
             }
+            // statusData.items.forEach(function(item, index){
+            //     arr.push(item.status)
+            // });
             var www = arr.sort(function (x, y) {
                 return new Date(y.create_time).getTime() - new Date(x.create_time).getTime();
             });

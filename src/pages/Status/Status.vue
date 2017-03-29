@@ -65,7 +65,7 @@
                 <div class="section-body">
                     <p class="status-text">爱闯祸的无名小卒缪恩，有一天阴差阳错得成了重要的月亮守护者，而他任职第一天就造成大错，间接导致太阳被偷、月亮消失、世界大乱。于是，他不得不携手太阳守护者和蜡质姑娘茜尔，展开一场大冒险，揪出混乱背后的黑手，拯救世界。</p>
                     <div class="media">
-                        <div class="media-pics clear flex" @click="onThumbnailsClick">
+                        <div class="media-pics clear flex">
                             <figure>
                                 <div data-href="http://wx2.sinaimg.cn/large/62c28b12ly1fdkh9wbyocj20nz0nz0yz.jpg" data-size="863x863" itemprop="contentUrl">
                                     <div class="media-pics-box" style="background-image:url(http://wx2.sinaimg.cn/orj360/62c28b12ly1fdkh9wbyocj20nz0nz0yz.jpg)"></div>
@@ -115,41 +115,7 @@
                     </a>
                 </div>
             </section>
-            <section class="tab-status" v-for="(item, index) in statusData">
-                <a class="section-header status-header flex">
-                    <img class="status-avatar" :src="item.user.profile_image_url">
-                    <div class="status-user flex-fit">
-                        <h5>{{ item.user.screen_name}}</h5>
-                        <p>{{ item.source}}</p>
-                    </div>
-                    <p class="status-time">{{ item.created_at}}</p>
-                    <img class="icon-img icon-more" src="../../assets/images/ic_more_action_overflow.png">
-                </a>
-                <div class="section-body">
-                    <p class="status-text" v-html="item.text"></p>
-                    <div class="media" v-if="item.pics">
-                        <div class="media-pics clear flex" @click="onThumbnailsClick"
-                             :class="{'media-pics-2': [1,2,4].indexOf(item.pics.length) > -1}">
-                            <figure v-for="(pic, j) in item.pics">
-                                <div :data-href="pic.large.url" :data-size="pic.large.geo.width + 'x' + pic.large.geo.height" itemprop="contentUrl">
-                                    <div class="media-pics-box" :style="'background-image:url(' + pic.url+ ')'"></div>
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-                <div class="section-footer tab-status-btns flex">
-                    <a href="javascript: void(0);" class="tab-status-btn flex-fit">
-                        <img class="icon-img" src="../../assets/images/ic_vote_normal_large.png">
-                    </a>
-                    <a href="javascript: void(0);" class="tab-status-btn flex-fit">
-                        <img class="icon-img" src="../../assets/images/ic_reply_large.png">
-                    </a>
-                    <a href="javascript: void(0);" class="tab-status-btn flex-fit">
-                        <img class="icon-img" src="../../assets/images/ic_reshare_large.png">
-                    </a>
-                </div>
-            </section>
+            <timeline :data="statusData"></timeline>
         </div>
         <m-photoswipe></m-photoswipe>  
         <tabbar v-model="select"></tabbar>
@@ -158,17 +124,19 @@
 <script>
 	import mHeader from '../../components/header'
     import tabbar from '../../components/tabbar'
+    import timeline from '../../components/status-item'
 	import mPhotoswipe from '../../components/photoswipe'
 	import PhotoSwipe from '../../assets/photoswipe/photoswipe.min.js'
 	import PhotoSwipeUI_Default from '../../assets/photoswipe/photoswipe-ui-default.min.js'
-    import WeiboData from '../../assets/json/weibo.json'
+    import timelineData from '../../assets/json/status/home_timeline.json'
 
 	export default {
 		name: 'status',
 		components: {
 			mHeader,
             mPhotoswipe,
-            tabbar
+            tabbar,
+            timeline
 		},
 		data() {
 			return {
@@ -181,92 +149,8 @@
         },
         methods: {
 	        fetchData(){
-		        this.statusData = WeiboData;
-            },
-	        onThumbnailsClick(e) {
-		        function closest(el, fn) {
-			        return el && ( fn(el) ? el : closest(el.parentNode, fn) );
-		        }
-
-		        e = e || window.event;
-		        e.preventDefault ? e.preventDefault() : e.returnValue = false;
-		        let eTarget = e.target || e.srcElement;
-
-		        let clickedListItem = closest(eTarget, function(el) {
-			        return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
-		        });
-		        if(!clickedListItem) {
-			        return;
-		        }
-		        let clickedGallery = clickedListItem.parentNode,
-			        childNodes = clickedListItem.parentNode.childNodes,
-			        numChildNodes = childNodes.length,
-			        nodeIndex = 0,
-			        index;
-
-		        for (let i = 0; i < numChildNodes; i++) {
-			        if(childNodes[i].nodeType !== 1) {
-				        continue;
-			        }
-
-			        if(childNodes[i] === clickedListItem) {
-				        index = nodeIndex;
-				        break;
-			        }
-			        nodeIndex++;
-		        }
-		        if(index >= 0) {
-			        openPhotoSwipe( index, clickedGallery );
-		        }
-
-		        function openPhotoSwipe(picIndex, galleryElement){
-			        let pswpElement = document.querySelectorAll('.pswp')[0],
-				        gallery,
-				        items = [],
-                        thumbElements = galleryElement.childNodes,
-				        numNodes = thumbElements.length,
-				        figureEl,linkEl, item;
-
-			        for(let i = 0; i < numNodes; i++) {
-				        figureEl = thumbElements[i]; // <figure> element
-
-				        // include only element nodes
-				        if (figureEl.nodeType === 1) {
-					        linkEl = figureEl.children[0]; // <a> element
-					        let size = linkEl.getAttribute('data-size').split('x');
-
-					        item = {
-						        src: linkEl.getAttribute('data-href'),
-                                w: size[0],
-                                h: size[1],
-                                el: figureEl
-					        };
-					        if(linkEl.children.length > 0) {
-						        item.msrc = linkEl.children[0].style.backgroundImage.split('"')[1];
-					        }
-					        items.push(item);
-				        }
-			        }
-			        let options = {
-				        focus: false,
-				        shareEl: false,
-				        tapToClose: true,
-				        bgOpacity: 0.65,
-                        showHideOpacity: true,
-				        index: picIndex,
-				        galleryUID: galleryElement.getAttribute('data-pswp-uid'),
-				        getThumbBoundsFn: function(index) {
-					        let thumbnail = items[index].el.getElementsByClassName('media-pics-box')[0],
-						        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-						        rect = thumbnail.getBoundingClientRect();
-					        return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
-				        }
-
-			        };
-			        gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-			        gallery.init();
-                }
-	        }
+		        this.statusData = timelineData;
+            }
         }
 	}
 </script>

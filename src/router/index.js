@@ -2,7 +2,8 @@ import App from '../App'
 
 // 【路由懒加载】将组建按组分块
 const Index = r => require.ensure([], () => r(require('../pages/Index/Index')), 'Index')
-const Subject = r => require.ensure([], () => r(require('../pages/Subject/Subject')), 'Subject')
+const Movie = r => require.ensure([], () => r(require('../pages/Subject/Movie')), 'Movie')
+const Book = r => require.ensure([], () => r(require('../pages/Subject/Book')), "Book")
 const Status = r => require.ensure([], () => r(require('../pages/Status/Status')), 'Status')
 const Group = r => require.ensure([], () => r(require('../pages/Group/Group')), 'Group')
 const Profile = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'Profile')
@@ -14,9 +15,13 @@ export default [{
   name: 'index',
   component: Index
 }, {
-  path: '/subject',
-  name: 'subject',
-  component: Subject
+  path: '/movie',
+  name: 'movie',
+  component: Movie
+}, {
+  path: '/book',
+  name: 'book',
+  component: Book
 }, {
   path: '/status',
   name: 'status',

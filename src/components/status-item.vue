@@ -65,6 +65,19 @@
                         </div>
                     </div>
                 </div>
+                <div class="status-page"
+                     v-else-if="item.page_info && item.page_info.type !== 'toopic'" 
+                     :class="item.page_info.type === 'webpage' ? 'status-page-web' : ''">
+                    <div class="status-page-wrapper"
+                         :style="'background-image:url('+item.page_info.page_pic.url+')'">
+                        <p class="status-page-type">文章</p>
+                        <h6 class="status-page-author">{{item.page_info.page_title}}</h6>
+                    </div>
+                    <div class="status-page-desc">
+                        <h5 class="status-page-title">{{ item.page_info.content1 }}</h5>
+                        <p class="status-page-content">{{ item.page_info.content2 }}</p>
+                    </div>
+                </div>
             </div>
             <div class="section-footer tab-status-btns flex">
                 <a href="javascript: void(0);"
@@ -106,16 +119,61 @@ export default {
         fetchData() {
             //this.statusData = timelineData;
         },
-        onThumbnailsClick(e) {
-            function closest(el, fn) {
-                return el && (fn(el) ? el : closest(el.parentNode, fn));
-            }
+        openPhotoSwipe(picIndex, galleryElement) {
+            let pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                items = [],
+                thumbElements = galleryElement.childNodes,
+                numNodes = thumbElements.length,
+                figureEl, linkEl, item;
 
+            for (let i = 0; i < numNodes; i++) {
+                figureEl = thumbElements[i]; // <figure> element
+
+                // include only element nodes
+                if (figureEl.nodeType === 1) {
+                    linkEl = figureEl.children[0]; // <a> element
+                    let size = linkEl.getAttribute('data-size').split('x');
+
+                    item = {
+                        src: linkEl.getAttribute('data-href'),
+                        w: size[0],
+                        h: size[1],
+                        el: figureEl
+                    };
+                    if (linkEl.children.length > 0) {
+                        item.msrc = linkEl.children[0].style.backgroundImage.split('"')[1];
+                    }
+                    items.push(item);
+                }
+            }
+            let options = {
+                focus: false,
+                shareEl: false,
+                tapToClose: true,
+                bgOpacity: 0.65,
+                showHideOpacity: true,
+                index: picIndex,
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+                getThumbBoundsFn: function (index) {
+                    let thumbnail = items[index].el.getElementsByClassName('media-pics-box')[0],
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+                    return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+                }
+            };
+            gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        },
+        closest(el, fn) {
+            return el && (fn(el) ? el : closest(el.parentNode, fn));
+        },
+        onThumbnailsClick(e) {
             e = e || window.event;
             e.preventDefault ? e.preventDefault() : e.returnValue = false;
             let eTarget = e.target || e.srcElement;
 
-            let clickedListItem = closest(eTarget, function (el) {
+            let clickedListItem = this.closest(eTarget, function (el) {
                 return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
             });
             if (!clickedListItem) {
@@ -139,54 +197,7 @@ export default {
                 nodeIndex++;
             }
             if (index >= 0) {
-                openPhotoSwipe(index, clickedGallery);
-            }
-
-            function openPhotoSwipe(picIndex, galleryElement) {
-                let pswpElement = document.querySelectorAll('.pswp')[0],
-                    gallery,
-                    items = [],
-                    thumbElements = galleryElement.childNodes,
-                    numNodes = thumbElements.length,
-                    figureEl, linkEl, item;
-
-                for (let i = 0; i < numNodes; i++) {
-                    figureEl = thumbElements[i]; // <figure> element
-
-                    // include only element nodes
-                    if (figureEl.nodeType === 1) {
-                        linkEl = figureEl.children[0]; // <a> element
-                        let size = linkEl.getAttribute('data-size').split('x');
-
-                        item = {
-                            src: linkEl.getAttribute('data-href'),
-                            w: size[0],
-                            h: size[1],
-                            el: figureEl
-                        };
-                        if (linkEl.children.length > 0) {
-                            item.msrc = linkEl.children[0].style.backgroundImage.split('"')[1];
-                        }
-                        items.push(item);
-                    }
-                }
-                let options = {
-                    focus: false,
-                    shareEl: false,
-                    tapToClose: true,
-                    bgOpacity: 0.65,
-                    showHideOpacity: true,
-                    index: picIndex,
-                    galleryUID: galleryElement.getAttribute('data-pswp-uid'),
-                    getThumbBoundsFn: function (index) {
-                        let thumbnail = items[index].el.getElementsByClassName('media-pics-box')[0],
-                            pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
-                            rect = thumbnail.getBoundingClientRect();
-                        return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
-                    }
-                };
-                gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-                gallery.init();
+                this.openPhotoSwipe(index, clickedGallery);
             }
         }
     }

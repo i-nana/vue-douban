@@ -495,6 +495,12 @@ section {
             vertical-align: middle;
         }
     }
+    a{
+        color: #009688;
+        span{
+            color: #3870a9;
+        }
+    }
 }
 
 .status-share {
@@ -570,5 +576,74 @@ section {
     background-color: @share-background;
     .status-text {
         font-size: 13px;
+    }
+}
+
+.status-page {
+    margin-top: 6px;
+    border: 1px solid @border-color;
+    .status-page-wrapper {
+        position: relative;
+        background-color: @share-background;
+        background-size: cover;
+        background-position: center center;
+        &:before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+        .status-page-author,
+        .status-page-type {
+            position: absolute;
+            color: #fff;
+            text-shadow: 0 0 4px #000;
+            letter-spacing: 1px;
+        }
+        .status-page-author {
+            bottom: 6px;
+            left: 10px;
+        }
+        .status-page-type {
+            top: 6px;
+            right: 10px;
+            font-size: 12px;
+        }
+    }
+    .status-page-desc {
+        margin:10px;
+        .status-page-title {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-wrap: break-word;
+            overflow: hidden;
+        }
+        .status-page-content {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            word-wrap: break-word;
+            overflow: hidden;
+            font-size: 12px;
+        }
+    }
+    &.status-page-web {
+        overflow: hidden;
+        background: @share-background;
+        .status-page-wrapper {
+            width: 70px;
+            float: left;
+            &:before {
+                padding-bottom: 100%;
+            }
+            >* {
+                display: none;
+            }
+        }
+        .status-page-desc {
+            margin: 8px 10px 0 80px;
+        }
     }
 }

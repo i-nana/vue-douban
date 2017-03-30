@@ -5,7 +5,7 @@
         <img src="../assets/images/ic_tab_home_active.png" alt="" slot="icon-active">
         首页
       </tabbar-item>
-      <tabbar-item id="subject" isRouter>
+      <tabbar-item id="movie" isRouter>
         <img src="../assets/images/ic_tab_subject_normal.png" alt="" slot="icon-normal">
         <img src="../assets/images/ic_tab_subject_active.png" alt="" slot="icon-active" >
         影音书

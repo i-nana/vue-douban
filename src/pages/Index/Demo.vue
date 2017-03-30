@@ -76,7 +76,8 @@ export default {
                     "images": [],
                     "comments_count": wb.comments_count,
                     "id": wb.id,
-                    "card": null
+                    "card": null,
+                    "page_info": wb.page_info
                 };
                 if (wb.pics) {
                     var imgs = [];

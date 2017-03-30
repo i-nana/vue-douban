@@ -166,7 +166,7 @@ export default {
             gallery.init();
         },
         closest(el, fn) {
-            return el && (fn(el) ? el : closest(el.parentNode, fn));
+            return el && (fn(el) ? el : this.closest(el.parentNode, fn));
         },
         onThumbnailsClick(e) {
             e = e || window.event;

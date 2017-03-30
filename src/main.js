@@ -5,11 +5,12 @@ import VueRouter from 'vue-router'
 import App from './App'
 import routes from './router'
 import './assets/less/app.less'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
-
+// import axios from 'axios'
+// import VueAxios from 'vue-axios'
+import VueResource from 'vue-resource'; 
+Vue.use(VueResource)
 Vue.use(VueRouter);
-Vue.use(VueAxios, axios);
+// Vue.use(VueAxios, axios);
 Vue.config.productionTip = false;
 
 const router = new VueRouter({

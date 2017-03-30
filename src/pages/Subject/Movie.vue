@@ -29,7 +29,10 @@
                         <ul class="h-scroll">
                             <subject-item v-for="(item, index) in hotMovies.subjects"
                                           v-if="index<10"
-                                          :data="item"></subject-item>
+                                          :data="item"
+                                          :key="item.id"
+                                          :poster="item.images.large"
+                                          :rating="true"></subject-item>
                             <li class="movie-item">
                                 <a href="javascript:void(0);">
                                     <div class="movie-poster movie-poster-empty">
@@ -58,7 +61,9 @@
                         <ul class="h-scroll">
                             <subject-item v-for="(item, index) in soonMovies.subjects"
                                           v-if="index<10"
-                                          :data="item"></subject-item>
+                                          :data="item"
+                                          :key="item.id"
+                                          :poster="item.images.large"></subject-item>
                             <li class="movie-item">
                                 <a href="javascript:void(0);">
                                     <div class="movie-poster movie-poster-empty">
@@ -153,9 +158,17 @@ export default {
     },
     data() {
         return {
-            select: 'subject',
-            hotMovies: [],
-            soonMovies: [],
+            select: 'movie',
+            hotMovies: () => {
+                return {
+                    subject: []
+                }
+            },
+            soonMovies: () => {
+                return {
+                    subject: []
+                }
+            }
         }
     },
     created() {
@@ -164,14 +177,14 @@ export default {
     },
     methods: {
         getHotMovies() {
-            this.axios.get('/api/movie/in_theaters').then(response => {
+            this.$http.jsonp('/api/movie/in_theaters').then(response => {
                 this.hotMovies = response.data;
             }, response => {
                 // error callback
             });
         },
         getSoonMovies() {
-            this.axios.get('/api/movie/coming_soon').then(response => {
+            this.$http.jsonp('/api/movie/coming_soon').then(response => {
                 this.soonMovies = response.data;
             }, response => {
                 // error callback
@@ -251,7 +264,7 @@ export default {
 .movie-item-rating {
     font-size: 12px;
     line-height: 1.2;
-    color: #e09015;
+    color: #a7a7a7;
     .rating-star-bg {
         display: inline-block;
         float: left;
@@ -269,6 +282,9 @@ export default {
         }
     }
 }
+
+
+
 
 
 

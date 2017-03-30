@@ -15,10 +15,10 @@
             </a>
         </m-header>
         <div class="page-content">
-            <section id="hot-movie"
+            <section id="book-fiction"
                      class="tab-movies tab-hot-movie">
                 <div class="section-header flex">
-                    <h4 class="flex-fit">影院热映</h4>
+                    <h4 class="flex-fit">最受关注的虚拟类图书</h4>
                     <div class="tab-btns">
                         <a class="flex"
                            href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
@@ -27,15 +27,31 @@
                 <div class="section-body">
                     <div class="h-scroll-box">
                         <ul class="h-scroll">
-                            <subject-item v-for="(item, index) in hotMovies.subjects"
-                                          v-if="index<10"
-                                          :data="item"></subject-item>
+                            <li class="movie-item"
+                                v-for="(item, index) in bookFiction.subject_collection_items"
+                                :key="item.id">
+                                <a href="javascript:void(0);">
+                                    <div class="movie-poster"
+                                         :style="'background-image:url(' + item.cover.url+ ')'"></div>
+                                    <p class="movie-item-name">{{ item.title }}</p>
+                                    <div class="movie-item-rating">
+                                        <div v-if="item.rating.count > 0">
+                                            <div class="rating-star-bg">
+                                                <span class="rating-star-on"
+                                                      :style="'width:'+ 10*item.rating.value +'%'"></span>
+                                            </div>
+                                            <span>{{item.rating.value}}</span>
+                                        </div>
+                                        <span v-else>暂无评分</span>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="movie-item">
                                 <a href="javascript:void(0);">
                                     <div class="movie-poster movie-poster-empty">
                                         <div class="movie-item-total">
                                             <h6>全部</h6>
-                                            <p>{{ hotMovies.total }}部</p>
+                                            <p>{{ bookFiction.total }} 本</p>
                                         </div>
                                     </div>
                                 </a>
@@ -44,10 +60,10 @@
                     </div>
                 </div>
             </section>
-            <section id="soon-movie"
+            <section id="book-nonfiction"
                      class="tab-movies tab-hot-movie">
                 <div class="section-header flex">
-                    <h4 class="flex-fit">院线即将上映</h4>
+                    <h4 class="flex-fit">最受关注的非虚构类图书</h4>
                     <div class="tab-btns">
                         <a class="flex"
                            href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
@@ -56,15 +72,30 @@
                 <div class="section-body">
                     <div class="h-scroll-box">
                         <ul class="h-scroll">
-                            <subject-item v-for="(item, index) in soonMovies.subjects"
-                                          v-if="index<10"
-                                          :data="item"></subject-item>
+                            <li class="movie-item"
+                                v-for="(item, index) in bookNonfiction.subject_collection_items">
+                                <a href="javascript:void(0);">
+                                    <div class="movie-poster"
+                                         :style="'background-image:url(' + item.cover.url+ ')'"></div>
+                                    <p class="movie-item-name">{{ item.title }}</p>
+                                    <div class="movie-item-rating">
+                                        <div v-if="item.rating.count > 0">
+                                            <div class="rating-star-bg">
+                                                <span class="rating-star-on"
+                                                      :style="'width:'+ 10*item.rating.value +'%'"></span>
+                                            </div>
+                                            <span>{{item.rating.value}}</span>
+                                        </div>
+                                        <span v-else>暂无评分</span>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="movie-item">
                                 <a href="javascript:void(0);">
                                     <div class="movie-poster movie-poster-empty">
                                         <div class="movie-item-total">
                                             <h6>全部</h6>
-                                            <p>{{ soonMovies.total }}部</p>
+                                            <p>{{ bookNonfiction.total }} 本</p>
                                         </div>
                                     </div>
                                 </a>
@@ -73,66 +104,48 @@
                     </div>
                 </div>
             </section>
-            <section class="tab-movies">
-                <div class="section-header">
-                    <h4>精选榜单</h4>
+            <section id="market-book"
+                     class="tab-movies tab-hot-movie market-book">
+                <div class="section-header flex">
+                    <h4 class="flex-fit">豆瓣纸书</h4>
+                    <div class="tab-btns">
+                        <a class="flex"
+                           href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../assets/images/ic_arrow_green_right.png"></a>
+                    </div>
                 </div>
                 <div class="section-body">
-                    <div class="h-scroll-box">
-                        <div class="h-scroll">
-                            <a class="movies-rank-item"
-                               href="javascript: void(0);">
-                                <h4>豆瓣 Top250</h4>
-                                <p>8分以上好电影</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1910813120.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p511118051.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p480747492.jpg);"></div>
-                                </div>
-                            </a>
-                            <a class="movies-rank-item movies-rank-item-week"
-                               href="javascript: void(0);">
-                                <h4>本周口碑榜</h4>
-                                <p>3月10日 - 3月17日</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2362603905.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2417948644.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img5.doubanio.com/view/movie_poster_cover/lpst/public/p2356912156.jpg);"></div>
-                                </div>
-                            </a>
-                            <a class="movies-rank-item movies-rank-item-new"
-                               href="javascript: void(0);">
-                                <h4>新片榜</h4>
-                                <p>3月10日 - 3月17日</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2408394301.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2412370372.jpg);"></div>
-                                </div>
-                            </a>
-                            <a class="movies-rank-item movies-rank-item-top"
-                               href="javascript: void(0);">
-                                <h4>票房榜</h4>
-                                <p>票房最高排名</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/mpst/public/p2432493858.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/mpst/public/p2429713841.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/mpst/public/p2431980130.jpg);"></div>
-                                </div>
-                            </a>
+                    <div class="section-body-header">
+                        <div class="movie-poster"
+                             :style="'background-image:url(' + marketBook.header.cover.url+ ')'"></div>
+                        <div class="section-markert-header">
+                            <h3 class="section-markert-header-title">{{ marketBook.header.title }}<span>￥{{marketBook.header.price}}</span></h3>
+                            <p>{{ marketBook.header.info }}</p>
                         </div>
+                    </div>
+                    <div class="h-scroll-box">
+                        <ul class="h-scroll">
+                            <li class="movie-item"
+                                v-for="(item, index) in marketBook.subject_collection_items">
+                                <a href="javascript:void(0);">
+                                    <div class="movie-poster"
+                                         :style="'background-image:url(' + item.cover.url+ ')'"></div>
+                                    <p class="movie-item-name">{{ item.title }}</p>
+                                    <div class="movie-item-rating">
+                                        <span>￥{{item.price}}</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="movie-item">
+                                <a href="javascript:void(0);">
+                                    <div class="movie-poster movie-poster-empty">
+                                        <div class="movie-item-total">
+                                            <h6>全部</h6>
+                                            <p>{{ marketBook.total }} 本</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -143,43 +156,62 @@
 <script>
 import mHeader from '../../components/header'
 import tabbar from '../../components/tabbar'
-import subjectItem from '../../components/subject-item'
 export default {
-    name: 'movie',
+    name: 'book',
     components: {
         mHeader,
-        tabbar,
-        subjectItem
+        tabbar
     },
     data() {
         return {
-            select: 'subject',
-            hotMovies: [],
-            soonMovies: [],
+            select: 'movie',
+            bookFiction: () => {
+                return {
+                    subject_collection_items: []
+                }
+            },
+            bookNonfiction: () => {
+                return {
+                    subject_collection_items: []
+                }
+            },
+            marketBook: () => {
+                return {
+                    header: {
+                        cover: {
+                            url: ''
+                        }
+                    },
+                    subject_collection_items: []
+                }
+            }
         }
     },
     created() {
-        this.getHotMovies();
-        this.getSoonMovies();
+        this.getBookFiction();
+        this.getBookNonfiction();
+        this.getMarketBook();
     },
     methods: {
-        getHotMovies() {
-            // this.axios.get('/api/movie/in_theaters').then(response => {
-            //     this.hotMovies = response.data;
-            // }, response => {
-            //     // error callback
-            // });
-            this.$http.jsonp("https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items").then(function (res) {
-                console.log(res)
+        getBookFiction() {
+            this.$http.jsonp("https://m.douban.com/rexxar/api/v2/subject_collection/book_fiction/items").then(res => {
+                this.bookFiction = res.data;
             }, function () {
                 //console.log(1)
             });
         },
-        getSoonMovies() {
-            this.axios.get('/api/movie/coming_soon').then(response => {
-                this.soonMovies = response.data;
-            }, response => {
-                // error callback
+        getBookNonfiction() {
+            this.$http.jsonp("https://m.douban.com/rexxar/api/v2/subject_collection/book_nonfiction/items").then(res => {
+                this.bookNonfiction = res.data;
+            }, function () {
+
+            });
+        },
+        getMarketBook() {
+            this.$http.jsonp("https://m.douban.com/rexxar/api/v2/subject_collection/market_product_book/items").then(res => {
+                this.marketBook = res.data;
+            }, function () {
+
             });
         }
     }
@@ -200,34 +232,6 @@ export default {
     &:last-child {
         margin-right: 15px;
     }
-    .movie-poster {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        background-size: cover;
-        background-position: center;
-        background-color: #ededed;
-        &:before {
-            content: '';
-            float: left;
-            margin-top: 142%;
-        }
-        .movie-item-total {
-            position: absolute;
-            width: 30px;
-            margin-left: -15px;
-            margin-top: -20px;
-            left: 50%;
-            top: 50%;
-            text-align: center;
-            color: #a7a7a7;
-            p {
-                font-size: 12px;
-                border-top: 1px solid #a7a7a7;
-                transform: scale(0.8);
-            }
-        }
-    }
     p.movie-item-name {
         margin-top: 4px;
         font-size: 12px;
@@ -235,6 +239,64 @@ export default {
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+    }
+}
+
+.movie-poster {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-color: #ededed;
+
+    &:before {
+        content: '';
+        float: left;
+        margin-top: 142%;
+    }
+    .movie-item-total {
+        position: absolute;
+        margin-left: -15px;
+        margin-top: -20px;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        color: #a7a7a7;
+        p {
+            font-size: 12px;
+            border-top: 1px solid #a7a7a7;
+            transform: scale(0.8);
+        }
+    }
+}
+
+.market-book {
+    .movie-poster {
+        background-color: transparent;
+    }
+    .section-body-header {
+        margin: 0 15px 15px;
+        overflow: hidden;
+        .movie-poster {
+            float: left;
+            margin-right: 10px;
+            width: 100px;
+        }
+    }
+    .section-markert-header {
+        position: relative;
+        margin-top: 10px;
+        p {
+            color: #a7a7a7;
+            font-size: 12px;
+        }
+        .section-markert-header-title {
+            span {
+                float: right;
+                color: #E76648;
+            }
+        }
     }
 }
 
@@ -256,10 +318,9 @@ export default {
 .movie-item-rating {
     font-size: 12px;
     line-height: 1.2;
-    color: #e09015;
+    color: #a7a7a7;
     .rating-star-bg {
         display: inline-block;
-        float: left;
         height: 11px;
         width: 55px;
         background: url("../../assets/images/rating_star_large_off.png") repeat-x;
@@ -274,6 +335,18 @@ export default {
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

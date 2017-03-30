@@ -108,7 +108,7 @@
         },
         methods: {
 	        fetchData(){
-                this.axios.get('/api/recommend_feed').then(response => {
+                this.$http.get('/api/recommend_feed').then(response => {
                     let data = response.data.data.recommend_feeds;
                     let hot = [], week = [], featured = [], recommend = [];
                     
@@ -143,7 +143,7 @@
 				});
             },
             getThemes(){
-                this.axios.get('/api/themes').then(response => {
+                this.$http.get('/api/themes').then(response => {
                     var data = response.data.data;
                     data.sort(function(x, y){
                         return Math.random() - 0.5;

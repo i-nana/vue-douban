@@ -30,7 +30,7 @@ export default [{
 		component: Book
 	}, {
 		path: 'demo',
-		name: 'demo',
+		name: 'subjectDemo',
 		component: SubjectDemo
 	}]
 }, {

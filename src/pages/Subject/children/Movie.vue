@@ -1,159 +1,138 @@
 <template>
-    <div>
-        <m-header title="书影音">
-            <a class="btn-chat"
-               href="javascript:void(0);"
-               slot="right">
-                <img class="icon-img"
-                     src="../../../assets/images/ic_chat_green.png">
-            </a>
-            <a class="btn-chat"
-               href="javascript:void(0);"
-               slot="right">
-                <img class="icon-img"
-                     src="../../../assets/images/ic_actionbar_search_icon.png">
-            </a>
-        </m-header>
-        <div class="page-content">
-            <section id="hot-movie"
-                     class="tab-movies tab-hot-movie">
-                <div class="section-header flex">
-                    <h4 class="flex-fit">影院热映</h4>
-                    <div class="tab-btns">
-                        <a class="flex"
-                           href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
-                    </div>
+    <div class="page-content">
+        <section id="hot-movie"
+                 class="tab-movies tab-hot-movie">
+            <div class="section-header flex">
+                <h4 class="flex-fit">影院热映</h4>
+                <div class="tab-btns">
+                    <a class="flex"
+                       href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
                 </div>
-                <div class="section-body">
-                    <div class="h-scroll-box">
-                        <ul class="h-scroll">
-                            <subject-item v-for="(item, index) in hotMovies.subjects"
-                                          v-if="index<10"
-                                          :data="item"
-                                          :key="item.id"
-                                          :poster="item.images.large"
-                                          :rating="true"></subject-item>
-                            <li class="movie-item">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster movie-poster-empty">
-                                        <div class="movie-item-total">
-                                            <h6>全部</h6>
-                                            <p>{{ hotMovies.total }}部</p>
-                                        </div>
+            </div>
+            <div class="section-body">
+                <div class="h-scroll-box">
+                    <ul class="h-scroll">
+                        <subject-item v-for="(item, index) in hotMovies.subjects"
+                                      v-if="index<10"
+                                      :data="item"
+                                      :key="item.id"
+                                      :poster="item.images.large"
+                                      :rating="true"></subject-item>
+                        <li class="movie-item">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster movie-poster-empty">
+                                    <div class="movie-item-total">
+                                        <h6>全部</h6>
+                                        <p>{{ hotMovies.total }}部</p>
                                     </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </section>
-            <section id="soon-movie"
-                     class="tab-movies tab-hot-movie">
-                <div class="section-header flex">
-                    <h4 class="flex-fit">院线即将上映</h4>
-                    <div class="tab-btns">
-                        <a class="flex"
-                           href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
-                    </div>
+            </div>
+        </section>
+        <section id="soon-movie"
+                 class="tab-movies tab-hot-movie">
+            <div class="section-header flex">
+                <h4 class="flex-fit">院线即将上映</h4>
+                <div class="tab-btns">
+                    <a class="flex"
+                       href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
                 </div>
-                <div class="section-body">
-                    <div class="h-scroll-box">
-                        <ul class="h-scroll">
-                            <subject-item v-for="(item, index) in soonMovies.subjects"
-                                          v-if="index<10"
-                                          :data="item"
-                                          :key="item.id"
-                                          :poster="item.images.large"></subject-item>
-                            <li class="movie-item">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster movie-poster-empty">
-                                        <div class="movie-item-total">
-                                            <h6>全部</h6>
-                                            <p>{{ soonMovies.total }}部</p>
-                                        </div>
+            </div>
+            <div class="section-body">
+                <div class="h-scroll-box">
+                    <ul class="h-scroll">
+                        <subject-item v-for="(item, index) in soonMovies.subjects"
+                                      v-if="index<10"
+                                      :data="item"
+                                      :key="item.id"
+                                      :poster="item.images.large"></subject-item>
+                        <li class="movie-item">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster movie-poster-empty">
+                                    <div class="movie-item-total">
+                                        <h6>全部</h6>
+                                        <p>{{ soonMovies.total }}部</p>
                                     </div>
-                                </a>
-                            </li>
-                        </ul>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="tab-movies">
+            <div class="section-header">
+                <h4>精选榜单</h4>
+            </div>
+            <div class="section-body">
+                <div class="h-scroll-box">
+                    <div class="h-scroll">
+                        <a class="movies-rank-item"
+                           href="javascript: void(0);">
+                            <h4>豆瓣 Top250</h4>
+                            <p>8分以上好电影</p>
+                            <div class="movies-rank-posters movie-item">
+                                <div class="movie-poster movie-poster-1"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1910813120.jpg);"></div>
+                                <div class="movie-poster movie-poster-2"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p511118051.jpg);"></div>
+                                <div class="movie-poster movie-poster-3"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p480747492.jpg);"></div>
+                            </div>
+                        </a>
+                        <a class="movies-rank-item movies-rank-item-week"
+                           href="javascript: void(0);">
+                            <h4>本周口碑榜</h4>
+                            <p>3月10日 - 3月17日</p>
+                            <div class="movies-rank-posters movie-item">
+                                <div class="movie-poster movie-poster-1"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2362603905.jpg);"></div>
+                                <div class="movie-poster movie-poster-2"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2417948644.jpg);"></div>
+                                <div class="movie-poster movie-poster-3"
+                                     style="background-image: url(https://img5.doubanio.com/view/movie_poster_cover/lpst/public/p2356912156.jpg);"></div>
+                            </div>
+                        </a>
+                        <a class="movies-rank-item movies-rank-item-new"
+                           href="javascript: void(0);">
+                            <h4>新片榜</h4>
+                            <p>3月10日 - 3月17日</p>
+                            <div class="movies-rank-posters movie-item">
+                                <div class="movie-poster movie-poster-1"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2408394301.jpg);"></div>
+                                <div class="movie-poster movie-poster-2"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
+                                <div class="movie-poster movie-poster-3"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2412370372.jpg);"></div>
+                            </div>
+                        </a>
+                        <a class="movies-rank-item movies-rank-item-top"
+                           href="javascript: void(0);">
+                            <h4>票房榜</h4>
+                            <p>票房最高排名</p>
+                            <div class="movies-rank-posters movie-item">
+                                <div class="movie-poster movie-poster-1"
+                                     style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/mpst/public/p2432493858.jpg);"></div>
+                                <div class="movie-poster movie-poster-2"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/mpst/public/p2429713841.jpg);"></div>
+                                <div class="movie-poster movie-poster-3"
+                                     style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/mpst/public/p2431980130.jpg);"></div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-            </section>
-            <section class="tab-movies">
-                <div class="section-header">
-                    <h4>精选榜单</h4>
-                </div>
-                <div class="section-body">
-                    <div class="h-scroll-box">
-                        <div class="h-scroll">
-                            <a class="movies-rank-item"
-                               href="javascript: void(0);">
-                                <h4>豆瓣 Top250</h4>
-                                <p>8分以上好电影</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1910813120.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p511118051.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p480747492.jpg);"></div>
-                                </div>
-                            </a>
-                            <a class="movies-rank-item movies-rank-item-week"
-                               href="javascript: void(0);">
-                                <h4>本周口碑榜</h4>
-                                <p>3月10日 - 3月17日</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2362603905.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2417948644.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img5.doubanio.com/view/movie_poster_cover/lpst/public/p2356912156.jpg);"></div>
-                                </div>
-                            </a>
-                            <a class="movies-rank-item movies-rank-item-new"
-                               href="javascript: void(0);">
-                                <h4>新片榜</h4>
-                                <p>3月10日 - 3月17日</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2408394301.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2421855655.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2412370372.jpg);"></div>
-                                </div>
-                            </a>
-                            <a class="movies-rank-item movies-rank-item-top"
-                               href="javascript: void(0);">
-                                <h4>票房榜</h4>
-                                <p>票房最高排名</p>
-                                <div class="movies-rank-posters movie-item">
-                                    <div class="movie-poster movie-poster-1"
-                                         style="background-image: url(https://img1.doubanio.com/view/movie_poster_cover/mpst/public/p2432493858.jpg);"></div>
-                                    <div class="movie-poster movie-poster-2"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/mpst/public/p2429713841.jpg);"></div>
-                                    <div class="movie-poster movie-poster-3"
-                                         style="background-image: url(https://img3.doubanio.com/view/movie_poster_cover/mpst/public/p2431980130.jpg);"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <tabbar v-model="select"></tabbar>
+            </div>
+        </section>
     </div>
 </template>
 <script>
-import mHeader from '../../../components/header'
-import tabbar from '../../../components/tabbar'
 import subjectItem from '../../../components/subject-item'
 export default {
     name: 'movie',
     components: {
-        mHeader,
-        tabbar,
         subjectItem
     },
     data() {
@@ -262,6 +241,8 @@ export default {
 }
 
 .movie-item-rating {
+    font-family: Helvetica;
+    font-weight: 200;
     font-size: 12px;
     line-height: 1.2;
     color: #a7a7a7;
@@ -282,6 +263,7 @@ export default {
         }
     }
 }
+
 
 
 
@@ -322,7 +304,7 @@ export default {
 .movies-rank-item {
     h4 {
         padding-top: 15px;
-        font-weight: bold;
+        font-weight: 500;
         line-height: 1.2;
     }
     p {

@@ -1,156 +1,139 @@
 <template>
-    <div>
-        <m-header title="书影音">
-            <a class="btn-chat"
-               href="javascript:void(0);"
-               slot="right">
-                <img class="icon-img"
-                     src="../../../assets/images/ic_chat_green.png">
-            </a>
-            <a class="btn-chat"
-               href="javascript:void(0);"
-               slot="right">
-                <img class="icon-img"
-                     src="../../../assets/images/ic_actionbar_search_icon.png">
-            </a>
-        </m-header>
-        <div class="page-content">
-            <section id="book-fiction"
-                     class="tab-movies tab-hot-movie">
-                <div class="section-header flex">
-                    <h4 class="flex-fit">最受关注的虚拟类图书</h4>
-                    <div class="tab-btns">
-                        <a class="flex"
-                           href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
-                    </div>
+    <div class="page-content">
+        <section id="book-fiction"
+                 class="tab-movies tab-hot-movie">
+            <div class="section-header flex">
+                <h4 class="flex-fit">最受关注的虚拟类图书</h4>
+                <div class="tab-btns">
+                    <a class="flex"
+                       href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
                 </div>
-                <div class="section-body">
-                    <div class="h-scroll-box">
-                        <ul class="h-scroll">
-                            <li class="movie-item"
-                                v-for="(item, index) in bookFiction.subject_collection_items"
-                                :key="item.id">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster"
-                                         :style="'background-image:url(' + item.cover.url+ ')'"></div>
-                                    <p class="movie-item-name">{{ item.title }}</p>
-                                    <div class="movie-item-rating">
-                                        <div v-if="item.rating.count > 0">
-                                            <div class="rating-star-bg">
-                                                <span class="rating-star-on"
-                                                      :style="'width:'+ 10*item.rating.value +'%'"></span>
-                                            </div>
-                                            <span>{{item.rating.value}}</span>
+            </div>
+            <div class="section-body">
+                <div class="h-scroll-box">
+                    <ul class="h-scroll">
+                        <li class="movie-item"
+                            v-for="(item, index) in bookFiction.subject_collection_items"
+                            :key="item.id">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster"
+                                     :style="'background-image:url(' + item.cover.url+ ')'"></div>
+                                <p class="movie-item-name">{{ item.title }}</p>
+                                <div class="movie-item-rating">
+                                    <div v-if="item.rating.count > 0">
+                                        <div class="rating-star-bg">
+                                            <span class="rating-star-on"
+                                                  :style="'width:'+ 10*item.rating.value +'%'"></span>
                                         </div>
-                                        <span v-else>暂无评分</span>
+                                        <span>{{item.rating.value}}</span>
                                     </div>
-                                </a>
-                            </li>
-                            <li class="movie-item">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster movie-poster-empty">
-                                        <div class="movie-item-total">
-                                            <h6>全部</h6>
-                                            <p>{{ bookFiction.total }} 本</p>
+                                    <span v-else>暂无评分</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="movie-item">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster movie-poster-empty">
+                                    <div class="movie-item-total">
+                                        <h6>全部</h6>
+                                        <p>{{ bookFiction.total }} 本</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="book-nonfiction"
+                 class="tab-movies tab-hot-movie">
+            <div class="section-header flex">
+                <h4 class="flex-fit">最受关注的非虚构类图书</h4>
+                <div class="tab-btns">
+                    <a class="flex"
+                       href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="h-scroll-box">
+                    <ul class="h-scroll">
+                        <li class="movie-item"
+                            v-for="(item, index) in bookNonfiction.subject_collection_items">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster"
+                                     :style="'background-image:url(' + item.cover.url+ ')'"></div>
+                                <p class="movie-item-name">{{ item.title }}</p>
+                                <div class="movie-item-rating">
+                                    <div v-if="item.rating.count > 0">
+                                        <div class="rating-star-bg">
+                                            <span class="rating-star-on"
+                                                  :style="'width:'+ 10*item.rating.value +'%'"></span>
                                         </div>
+                                        <span>{{item.rating.value}}</span>
                                     </div>
-                                </a>
-                            </li>
-                        </ul>
+                                    <span v-else>暂无评分</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="movie-item">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster movie-poster-empty">
+                                    <div class="movie-item-total">
+                                        <h6>全部</h6>
+                                        <p>{{ bookNonfiction.total }} 本</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="market-book"
+                 class="tab-movies tab-hot-movie market-book">
+            <div class="section-header flex">
+                <h4 class="flex-fit">豆瓣纸书</h4>
+                <div class="tab-btns">
+                    <a class="flex"
+                       href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
+                </div>
+            </div>
+            <div class="section-body">
+                <div class="section-body-header" v-if="marketBook.header">
+                    <div class="movie-poster"
+                         :style="'background-image:url(' + marketBook.header.cover.url+ ')'"></div>
+                    <div class="section-markert-header">
+                        <h3 class="section-markert-header-title">{{ marketBook.header.title }}<span>￥{{marketBook.header.price}}</span></h3>
+                        <p>{{ marketBook.header.info }}</p>
                     </div>
                 </div>
-            </section>
-            <section id="book-nonfiction"
-                     class="tab-movies tab-hot-movie">
-                <div class="section-header flex">
-                    <h4 class="flex-fit">最受关注的非虚构类图书</h4>
-                    <div class="tab-btns">
-                        <a class="flex"
-                           href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
-                    </div>
-                </div>
-                <div class="section-body">
-                    <div class="h-scroll-box">
-                        <ul class="h-scroll">
-                            <li class="movie-item"
-                                v-for="(item, index) in bookNonfiction.subject_collection_items">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster"
-                                         :style="'background-image:url(' + item.cover.url+ ')'"></div>
-                                    <p class="movie-item-name">{{ item.title }}</p>
-                                    <div class="movie-item-rating">
-                                        <div v-if="item.rating.count > 0">
-                                            <div class="rating-star-bg">
-                                                <span class="rating-star-on"
-                                                      :style="'width:'+ 10*item.rating.value +'%'"></span>
-                                            </div>
-                                            <span>{{item.rating.value}}</span>
-                                        </div>
-                                        <span v-else>暂无评分</span>
+                <div class="h-scroll-box">
+                    <ul class="h-scroll">
+                        <li class="movie-item"
+                            v-for="(item, index) in marketBook.subject_collection_items">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster"
+                                     :style="'background-image:url(' + item.cover.url+ ')'"></div>
+                                <p class="movie-item-name">{{ item.title }}</p>
+                                <div class="movie-item-rating">
+                                    <span>￥{{item.price}}</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="movie-item">
+                            <a href="javascript:void(0);">
+                                <div class="movie-poster movie-poster-empty">
+                                    <div class="movie-item-total">
+                                        <h6>全部</h6>
+                                        <p>{{ marketBook.total }} 本</p>
                                     </div>
-                                </a>
-                            </li>
-                            <li class="movie-item">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster movie-poster-empty">
-                                        <div class="movie-item-total">
-                                            <h6>全部</h6>
-                                            <p>{{ bookNonfiction.total }} 本</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-            </section>
-            <section id="market-book"
-                     class="tab-movies tab-hot-movie market-book">
-                <div class="section-header flex">
-                    <h4 class="flex-fit">豆瓣纸书</h4>
-                    <div class="tab-btns">
-                        <a class="flex"
-                           href="javascript:void(0);">更多 <img class="icon-img icon-right-arrow" src="../../../assets/images/ic_arrow_green_right.png"></a>
-                    </div>
-                </div>
-                <div class="section-body">
-                    <div class="section-body-header">
-                        <div class="movie-poster"
-                             :style="'background-image:url(' + marketBook.header.cover.url+ ')'"></div>
-                        <div class="section-markert-header">
-                            <h3 class="section-markert-header-title">{{ marketBook.header.title }}<span>￥{{marketBook.header.price}}</span></h3>
-                            <p>{{ marketBook.header.info }}</p>
-                        </div>
-                    </div>
-                    <div class="h-scroll-box">
-                        <ul class="h-scroll">
-                            <li class="movie-item"
-                                v-for="(item, index) in marketBook.subject_collection_items">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster"
-                                         :style="'background-image:url(' + item.cover.url+ ')'"></div>
-                                    <p class="movie-item-name">{{ item.title }}</p>
-                                    <div class="movie-item-rating">
-                                        <span>￥{{item.price}}</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="movie-item">
-                                <a href="javascript:void(0);">
-                                    <div class="movie-poster movie-poster-empty">
-                                        <div class="movie-item-total">
-                                            <h6>全部</h6>
-                                            <p>{{ marketBook.total }} 本</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <tabbar v-model="select"></tabbar>
+            </div>
+        </section>
     </div>
 </template>
 <script>
@@ -316,6 +299,8 @@ export default {
 }
 
 .movie-item-rating {
+    font-family: Helvetica;
+    font-weight: 200;
     font-size: 12px;
     line-height: 1.2;
     color: #a7a7a7;
@@ -335,6 +320,7 @@ export default {
         }
     }
 }
+
 
 
 

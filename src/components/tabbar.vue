@@ -37,7 +37,6 @@
     },    
     computed:{
       value(){
-        console.log(this.$route.param)
         return this.$route.matched[0].name
       }
     }

@@ -5,7 +5,7 @@
         <img src="../assets/images/ic_tab_home_active.png" alt="" slot="icon-active">
         首页
       </tabbar-item>
-      <tabbar-item id="movie" isRouter>
+      <tabbar-item id="subject" isRouter>
         <img src="../assets/images/ic_tab_subject_normal.png" alt="" slot="icon-normal">
         <img src="../assets/images/ic_tab_subject_active.png" alt="" slot="icon-active" >
         影音书
@@ -37,7 +37,8 @@
     },    
     computed:{
       value(){
-        return this.$route.name
+        console.log(this.$route.param)
+        return this.$route.matched[0].name
       }
     }
   }

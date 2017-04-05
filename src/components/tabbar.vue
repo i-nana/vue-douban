@@ -37,7 +37,8 @@
     },    
     computed:{
       value(){
-        return this.$route.matched[0].name
+        console.log(this.$route);
+        return this.$route.matched[0].path;
       }
     }
   }

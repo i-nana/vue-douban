@@ -39,7 +39,7 @@ export default {
     },
     data() {
         return {
-            select: 'subject',
+            select: 'subject'
         }
     },
     created() {

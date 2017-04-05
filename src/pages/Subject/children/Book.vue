@@ -147,7 +147,7 @@ export default {
     },
     data() {
         return {
-            select: 'book',
+            select: 'subject',
             bookFiction: () => {
                 return {
                     subject_collection_items: []
@@ -320,23 +320,6 @@ export default {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ********* */
 

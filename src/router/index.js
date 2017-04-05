@@ -18,9 +18,12 @@ export default [{
 	component: Index
 }, {
 	path: '/subject',
-	name: 'subject',
 	component: Subject,
 	children: [{
+		path: '/',
+		name: 'subject',
+		redirect: '/subject/movie'
+	}, {
 		path: 'movie',
 		name: 'movie',
 		component: Movie
@@ -46,7 +49,7 @@ export default [{
 	name: 'profile',
 	component: Profile
 }, {
-	path: 'Index',
+	path: 'index',
 	redirect: '/'
 }, {
 	path: '/themes',

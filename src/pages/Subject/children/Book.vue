@@ -173,7 +173,7 @@ export default {
     created() {
         this.getBookFiction();
         this.getBookNonfiction();
-        this.getMarketBook();
+        // this.getMarketBook();
     },
     methods: {
         getBookFiction() {

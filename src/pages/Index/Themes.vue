@@ -38,7 +38,7 @@
         },
         methods: {
             getThemes(){
-                this.axios.get('/api/themes').then(response => {
+                this.$http.get('/api/themes').then(response => {
                     this.themes  = response.data.data;
                 });
             }

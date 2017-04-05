@@ -19,8 +19,6 @@
 <script>
 import mHeader from '../../components/header'
 import swipe from '../../components/swipe'
-import weibo from '../../assets/json/weibo.json'
-import statusData from '../../assets/json/status/home_timeline.json'
 export default {
     name: 'test',
     components: {

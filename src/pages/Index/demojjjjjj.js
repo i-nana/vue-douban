@@ -1,5 +1,5 @@
 // weibo 数据格式化
-fetchData() {
+function fetchData() {
     var arr = [];
     var initData = function (wb) {
         var pubtime = wb.created_at.slice(0, 1) === '2' ? wb.created_at : '2017-' + wb.created_at;

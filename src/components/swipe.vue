@@ -118,7 +118,8 @@ export default ({
             if (speed) {
                 element.style.webkitTransition = '-webkit-transform ' + speed + 'ms linear';
                 setTimeout(() => {
-                    element.style.webkitTransform = `translate3d(-${offset}px, 0, 0)`;
+                    offset = -1 * offset;
+                    element.style.webkitTransform = `translate3d(${offset}px, 0, 0)`;
                 }, 50);
             } else {
                 element.style.webkitTransition = '';
@@ -135,12 +136,10 @@ export default ({
             var touch = this.touch;
             if (touch.swiping || !touch.isCanSwipe) return;
             var touches = e.touches[0];
-            console.log(touches);
             touch.startX = touches.pageX;
             touch.startY = touches.pageY;
 
             touch.swiping = 1;
-
         },
         touchMove(e) {
             var touch = this.touch;
@@ -152,7 +151,6 @@ export default ({
             if (dDis >= 0) {     // 水平方向滑动
                 e.preventDefault();
                 e.stopPropagation();
-                //touch.isCanSwipe = 0;
                 touch.distance = left - touch.startX;
                 var currentPage = this.index;
                 var nextPage = touch.distance > 0 ? currentPage - 1 : currentPage + 1;
@@ -179,18 +177,20 @@ export default ({
         },
         touchEnd(e) {
             var touch = this.touch;
-            console.log(this.direction);
+            console.log(this.direction, touch.next, touch.current);
             var currentLi = this.list[touch.current];
             var nextLi = this.list[touch.next];
-            currentLi.style.display = 'block';
-            nextLi.style.display = 'block';
+            var callback = () => {
+                currentLi.style.display = 'none';
+                this.index = touch.next;
+                //     this.scroll();
+            };
             if (this.direction === 'left') {
-                currentLi.style.webkitTransform = `translate3d( ${-this.width}px, 0, 0)`;
-                nextLi.style.webkitTransform = 'translate3d(0, 0, 0)';
+                this.translate(currentLi, this.width, 200, callback);
+                this.translate(nextLi, 0, 200);
             } else if (this.direction === 'right') {
-                console.log(this.width);
-                currentLi.style.webkitTransform = `translate3d(${this.width}px, 0, 0)`;
-                nextLi.style.webkitTransform = 'translate3d(0, 0, 0)';
+                this.translate(currentLi, -1 * this.width, 200, callback);
+                this.translate(nextLi, 0, 200);
             }
             this.index = touch.next;
             touch.swiping = 0;

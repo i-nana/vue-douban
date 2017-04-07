@@ -7,7 +7,7 @@
                 <img class="status-avatar"
                      :src="item.author.avatar">
                 <div class="status-user flex-fit">
-                    <h5>{{ item.author.name}}</h5>
+                    <h5 class="status-user-name">{{ item.author.name}}</h5>
                     <p>{{ item.activity }}</p>
                 </div>
                 <p class="status-time">{{ item.create_time }}</p>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="status-share flex status-share-movie"
-                     v-else-if="item.card">
+                     v-if="item.card">
                     <div class="status-share-poster"
                          v-if="item.card.image && item.card.image.normal"
                          :style="'background-image: url(' + item.card.image.large.url + ')'"></div>
@@ -46,7 +46,8 @@
                 <div class="status-reshare"
                      v-else-if="item.reshared_status">
                     <p class="status-text">
-                        <a href="javascript: void(0);">@{{item.reshared_status.author.name}}</a>
+                        <a class="status-reshare-name"
+                           href="javascript: void(0);">@{{item.reshared_status.author.name}}</a>
                         <span v-html="item.reshared_status.text"></span>
                     </p>
                     <div class="media"
@@ -64,10 +65,33 @@
                             </figure>
                         </div>
                     </div>
+                    <div class="status-page"
+                         v-if="item.reshared_status.page_info && item.reshared_status.page_info.type === 'article'">
+                        <div class="status-page-wrapper"
+                             :style="'background-image:url('+item.reshared_status.page_info.page_pic.url+')'">
+                            <p class="status-page-type">文章</p>
+                            <h6 class="status-page-author">{{item.reshared_status.page_info.page_title}}</h6>
+                        </div>
+                        <div class="status-page-desc">
+                            <h5 class="status-page-title">{{ item.reshared_status.page_info.content1 }}</h5>
+                            <p class="status-page-content">{{ item.reshared_status.page_info.content2 }}</p>
+                        </div>
+                    </div>
+    
+                    <div class="status-page status-page-web"
+                         v-else-if="item.reshared_status.page_info">
+                        <div class="status-page-wrapper"
+                             :style="'background-image:url('+item.reshared_status.page_info.page_pic.url+')'">
+                        </div>
+                        <div class="status-page-desc flex">
+                            <h5 class="status-page-title">{{ item.reshared_status.page_info.page_title }}</h5>
+                            <p class="status-page-content"
+                               v-if="item.reshared_status.page_info.content2.length > 0">{{ item.reshared_status.page_info.content2 }}</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="status-page"
-                     v-else-if="item.page_info && item.page_info.type !== 'toopic'" 
-                     :class="item.page_info.type === 'webpage' ? 'status-page-web' : ''">
+                     v-else-if="item.page_info && item.page_info.type === 'article'">
                     <div class="status-page-wrapper"
                          :style="'background-image:url('+item.page_info.page_pic.url+')'">
                         <p class="status-page-type">文章</p>
@@ -76,6 +100,19 @@
                     <div class="status-page-desc">
                         <h5 class="status-page-title">{{ item.page_info.content1 }}</h5>
                         <p class="status-page-content">{{ item.page_info.content2 }}</p>
+                    </div>
+                </div>
+                <div class="status-page status-page-web"
+                     v-else-if="item.page_info">
+                    <div class="status-page-wrapper"
+                         :style="'background-image:url('+item.page_info.page_pic.url+')'">
+                    </div>
+                    <div class="status-page-desc flex">
+                        <h5 class="status-page-title">{{ item.page_info.page_title }}</h5>
+                        <p class="status-page-content"
+                           v-if="item.page_info.type === 'topic' && item.page_info.content1.length > 0">{{ item.page_info.content1 }}</p>
+                        <p class="status-page-content"
+                           v-if="item.page_info.content2.length > 0">{{ item.page_info.content2 }}</p>
                     </div>
                 </div>
             </div>

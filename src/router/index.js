@@ -9,7 +9,7 @@ const Status = r => require.ensure([], () => r(require('../pages/Status/Status')
 const Group = r => require.ensure([], () => r(require('../pages/Group/Group')), 'Group')
 const Profile = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'Profile')
 const Themes = r => require.ensure([], () => r(require('../pages/Index/Themes')), "Themes")
-const Demo = r => require.ensure([], () => r(require('../pages/Index/Demo')), "Demo")
+const Demo = r => require.ensure([], () => r(require('../pages/Demo/statusData')), "Demo")
 const SubjectDemo = r => require.ensure([], () => r(require('../pages/Subject/children/Demo')), "Subject")
 
 export default [{

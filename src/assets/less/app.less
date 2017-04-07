@@ -309,7 +309,7 @@ section {
     .section-header {
         position: relative;
         padding: 8px 15px;
-        h4{
+        h4 {
             line-height: 28px;
         }
     }
@@ -469,6 +469,9 @@ section {
     .status-user {
         margin: 2px 10px 0;
         color: @font-color;
+        .status-user-name {
+            line-height: 1.5;
+        }
         p {
             font-size: 12px;
             color: @gray-font-color;
@@ -487,7 +490,11 @@ section {
 .tab-status {
     .section-body {
         padding: 0 15px 10px;
-        .status-text {}
+        >.status-text {
+            +div {
+                margin-top: 8px;
+            }
+        }
     }
     .url-icon {
         display: inline-block;
@@ -498,9 +505,9 @@ section {
             vertical-align: middle;
         }
     }
-    a{
+    a {
         color: #009688;
-        span{
+        span {
             color: #3870a9;
         }
     }
@@ -575,16 +582,28 @@ section {
 }
 
 .status-reshare {
-    padding: 10px;
+    padding: 10px 15px;
+    margin-left: -15px;
+    margin-right: -15px;
+    margin-bottom: -10px;
     background-color: @share-background;
     .status-text {
         font-size: 13px;
+        .status-reshare-name {
+            font-weight: 600;
+        }
+    }
+    .status-page {
+        &.status-page-web {
+            background-color: #fff;
+        }
     }
 }
 
 .status-page {
     margin-top: 6px;
     border: 1px solid @border-color;
+    background-color: #fff;
     .status-page-wrapper {
         position: relative;
         background-color: @share-background;
@@ -615,13 +634,15 @@ section {
         }
     }
     .status-page-desc {
-        margin:10px;
+        margin: 10px;
         .status-page-title {
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 1;
             -webkit-box-orient: vertical;
             word-wrap: break-word;
             overflow: hidden;
+            width: 100%;
+            font-weight: 600;
         }
         .status-page-content {
             display: -webkit-box;
@@ -630,6 +651,7 @@ section {
             word-wrap: break-word;
             overflow: hidden;
             font-size: 12px;
+            width: 100%;
         }
     }
     &.status-page-web {
@@ -646,7 +668,14 @@ section {
             }
         }
         .status-page-desc {
-            margin: 8px 10px 0 80px;
+            margin: 0 10px 0 80px;
+            padding: 4px 0;
+            height: 70px;
+            align-items: center;
+            flex-wrap: wrap;
+            .status-page-content {
+                -webkit-line-clamp: 1;
+            }
         }
     }
 }

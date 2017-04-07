@@ -46,8 +46,8 @@ export default {
     components: {
     },
     ready: function () {
-        var _this = this;
-        var timer = setInterval(function () {
+        let _this = this;
+        let timer = setInterval(function () {
             if (_this.shufflingId >= 0 && _this.shufflingId < _this.shufflingData.length - 1) {
                 _this.shufflingId = parseInt(_this.shufflingId) + 1;
             }
@@ -73,13 +73,13 @@ export default {
             this.PreNext = false;
         },
         preFun: function () {
-            var _this = this;
+            let _this = this;
             if (_this.shufflingId > 0 && _this.shufflingId < _this.shufflingData.length) {
                 _this.shufflingId = parseInt(_this.shufflingId) - 1;
             }
         },
         nextFun: function () {
-            var _this = this;
+            let _this = this;
             if (_this.shufflingId >= 0 && _this.shufflingId < _this.shufflingData.length - 1) {
                 _this.shufflingId = parseInt(_this.shufflingId) + 1;
             }

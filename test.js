@@ -1,7 +1,7 @@
-var weibo = [];
-var arr = [];
-for(var i=0;i<weibo.length; i++){
-	var wb = weibo[i].mblog;
+let weibo = [];
+let arr = [];
+for(let i=0;i<weibo.length; i++){
+	let wb = weibo[i].mblog;
 	arr.push({
 		created_at: wb.created_at,
 		text: wb.text,
@@ -16,7 +16,7 @@ for(var i=0;i<weibo.length; i++){
 		pics: wb.pics
 	});
 }
-var www = arr.sort(function(x, y){
+let www = arr.sort(function(x, y){
 	return new Date('2017-' + y.created_at).getTime() - new Date('2017-' + x.created_at).getTime();
 })
 JSON.stringify(www);

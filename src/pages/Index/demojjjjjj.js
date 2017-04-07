@@ -1,10 +1,10 @@
 // weibo 数据格式化
 function fetchData() {
-    var arr = [];
-    var initData = function (wb) {
-        var pubtime = wb.created_at.slice(0, 1) === '2' ? wb.created_at : '2017-' + wb.created_at;
-        var text = wb.text.replace(/\s\s+/g, ' ');
-        var status = {
+    let arr = [];
+    let initData = function (wb) {
+        let pubtime = wb.created_at.slice(0, 1) === '2' ? wb.created_at : '2017-' + wb.created_at;
+        let text = wb.text.replace(/\s\s+/g, ' ');
+        let status = {
             "reshares_count": wb.reposts_count,
             "liked": false,
             "author": {
@@ -25,9 +25,9 @@ function fetchData() {
             "page_info": wb.page_info
         };
         if (wb.pics) {
-            var imgs = [];
+            let imgs = [];
             wb.pics.forEach(function (item, index) {
-                var img = {
+                let img = {
                     "large": {
                         "url": item.large.url,
                         "width": item.large.geo.width,
@@ -45,11 +45,11 @@ function fetchData() {
         }
         return status;
     };
-    for (var i = 0; i < weibo.length; i++) {
-        var wb = weibo[i].mblog;
-        var status = initData(wb);
+    for (let i = 0; i < weibo.length; i++) {
+        let wb = weibo[i].mblog;
+        let status = initData(wb);
         if (wb.retweeted_status) {
-            var wbre = wb.retweeted_status;
+            let wbre = wb.retweeted_status;
             status.reshared_status = initData(wbre);
         };
         arr.push(status);
@@ -57,7 +57,7 @@ function fetchData() {
     // statusData.items.forEach(function(item, index){
     //     arr.push(item.status)
     // });
-    var www = arr.sort(function (x, y) {
+    let www = arr.sort(function (x, y) {
         return new Date(y.create_time).getTime() - new Date(x.create_time).getTime();
     });
     // console.log(JSON.stringify(www));

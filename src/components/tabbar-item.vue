@@ -22,7 +22,7 @@ export default {
 	},
 	computed: {
 		isActive() {
-			var routeMatch = this.$parent.value;
+			let routeMatch = this.$parent.value;
 			if (routeMatch === '') {
 				routeMatch = 'index';
 			} else {

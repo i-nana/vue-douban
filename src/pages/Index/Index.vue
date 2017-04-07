@@ -144,7 +144,7 @@
             },
             getThemes(){
                 this.$http.get('/api/themes').then(response => {
-                    var data = response.data.data;
+                    let data = response.data.data;
                     data.sort(function(x, y){
                         return Math.random() - 0.5;
                     });

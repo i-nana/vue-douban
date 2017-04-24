@@ -4,6 +4,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App'
 import routes from './router'
+import store from './store/'
 import './assets/less/app.less'
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
@@ -18,9 +19,9 @@ const router = new VueRouter({
   	// mode: 'history'
 })
 
-
 new Vue({
 	router,
+	store,
 	template: '<App/>',
 	components: {App}
 }).$mount('#app')

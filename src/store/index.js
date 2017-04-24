@@ -9,7 +9,8 @@ Vue.use(Vuex);
 
 const state = {
     login: false,
-    userInfo: {
+    user: {
+        id: null,
         name: null,
         slogan: null,
         avatar: null
@@ -18,7 +19,6 @@ const state = {
 
 export default new Vuex.Store({
     state,
-    mutations: {
-
-    }
+    mutations,
+    actions
 })

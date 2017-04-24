@@ -188,10 +188,17 @@ header {
         padding-bottom: 0;
     }
 }
-
+.no-user {
+    .profile-cover {
+        text-align: center;
+        .profile-wrapper {
+            background: none;
+        }
+    }
+}
 .profile-cover {
     height: 125px;
-    background: url("../pics/profile_bg.jpeg") center 45% no-repeat;
+    background: url('../images/bg_default_profile_banner_grn.webp') center no-repeat;
     background-size: cover;
     color: #ffffff;
     .profile-wrapper {
@@ -212,6 +219,9 @@ header {
         border: 2px solid #fff;
         overflow: hidden;
         img {
+            display: block;
+            margin-left: -2px;
+            margin-top: -2px;
             width: inherit;
             height: inherit;
         }
@@ -233,6 +243,16 @@ header {
                 margin-right: 16px;
             }
         }
+    }
+    .login-btn{
+        display: inline-block;
+        margin-right: 20px;
+        padding: 10px;
+        width: 180px;
+        border: 1px solid #fff;
+        color: #fff;
+        border-radius: 5px;
+        text-align: center;
     }
 }
 

@@ -5,16 +5,20 @@
                 <img class="icon-img" src="../../assets/images/ic_settings.png">
             </a>
         </m-header>
-        <div class="page-content">
+        <div class="page-content"
+        :class="{'no-user': !isLogin}">
             <div class="profile-cover">
                 <div class="profile-wrapper flex">
                     <div class="profile-avatar">
-                        <img src="../../assets/pics/avatar.jpg">
+                        <img src="../../assets/images/avatar_female_100.png">
                     </div>
                     <div class="profile-info flex-fit">
-                        <h1>葳蕤</h1>
-                        <p class="profile-desc">人之命至 人随己愿</p>
-                        <p class="profile-fans"><span>关注 35</span><span>被关注 8 </span></p>
+                        <div  v-if="isLogin">
+                            <h1>葳蕤</h1>
+                            <p class="profile-desc">{{ user.slogan }}</p>
+                            <p class="profile-fans"><span>关注 35</span><span>被关注 8 </span></p>
+                        </div>
+                        <router-link v-else to="themes" class="login-btn">登录/注册</router-link>
                     </div>
                 </div>
             </div>
@@ -94,7 +98,24 @@
 		},
         data(){
             return {
-                select: 'profile'
+                select: 'profile',
+                isLogin: false,
+                user: {
+                    name: null,
+                    slogan: null,
+                    avatar: null
+                }
+            }
+        },
+        created() {
+            this.fetchData();
+        },
+        methods: {
+            fetchData() {
+                var uid = this.$store.state.user.id;
+                if(uid) {
+                    isLogin = !0;
+                }
             }
         }
 	}

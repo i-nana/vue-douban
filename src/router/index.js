@@ -8,6 +8,7 @@ const Book = r => require.ensure([], () => r(require('../pages/Subject/children/
 const Status = r => require.ensure([], () => r(require('../pages/Status/Status')), 'Status')
 const Group = r => require.ensure([], () => r(require('../pages/Group/Group')), 'Group')
 const Profile = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'Profile')
+const Login = r => require.ensure([], () => r(require('../pages/Profile/Login')), 'Login')
 const Themes = r => require.ensure([], () => r(require('../pages/Index/Themes')), "Themes")
 const Demo = r => require.ensure([], () => r(require('../pages/Demo/statusData')), "Demo")
 const SubjectDemo = r => require.ensure([], () => r(require('../pages/Subject/children/Demo')), "Subject")
@@ -55,6 +56,10 @@ export default [{
 	path: '/themes',
 	name: 'themes',
 	component: Themes
+}, {
+	path: '/login',
+	name: 'login',
+	component: Login
 }, {
 	path: '/demo',
 	name: 'demo',

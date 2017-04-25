@@ -18,7 +18,7 @@
                             <p class="profile-desc">{{ user.slogan }}</p>
                             <p class="profile-fans"><span>关注 35</span><span>被关注 8 </span></p>
                         </div>
-                        <router-link v-else to="themes" class="login-btn">登录/注册</router-link>
+                        <router-link v-else to="login" class="login-btn">登录/注册</router-link>
                     </div>
                 </div>
             </div>

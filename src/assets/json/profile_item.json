@@ -1,0 +1,45 @@
+[{
+    "id": "likes",
+    "name": "喜欢",
+    "img": "ic_my_likes.png"
+},{
+    "id": "note",
+    "name": "日记",
+    "img": "ic_my_note.png"
+},{
+    "id": "album",
+    "name": "相册",
+    "img": "ic_my_album.png"
+},{
+    "id": "status",
+    "name": "我的广播",
+ic_my_status.png"
+},{
+    "id": "tvs",
+    "name": "电影·电视",
+    "img": "../assets/images/ic_my_tvs.png"
+},{
+    "id": "music",
+    "name": "音乐",
+    "img": "../assets/images/ic_my_music.png"
+},{
+    "id": "books",
+    "name": "读书",
+    "img": "../assets/images/ic_my_books.png"
+},{
+    "id": "events",
+    "name": "同城活动",
+    "img": "ic_my_events.png"
+},{
+    "id": "doulist",
+    "name": "豆列",
+    "img": "ic_my_doulist.png"
+},{
+    "id": "orders",
+    "name": "订单",
+    "img": "ic_my_orders.png"
+},{
+    "id": "wallet",
+    "name": "钱包",
+    "img": "ic_my_wallet.png"
+}]

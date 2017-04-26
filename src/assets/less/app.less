@@ -188,6 +188,7 @@ header {
         padding-bottom: 0;
     }
 }
+
 .no-user {
     .profile-cover {
         text-align: center;
@@ -196,6 +197,7 @@ header {
         }
     }
 }
+
 .profile-cover {
     height: 125px;
     background: url('../images/bg_default_profile_banner_grn.webp') center no-repeat;
@@ -244,7 +246,7 @@ header {
             }
         }
     }
-    .login-btn{
+    .login-btn {
         display: inline-block;
         margin-right: 20px;
         padding: 10px;
@@ -290,15 +292,23 @@ header {
 .profile-tab {
     background: #fff;
     .profile-tab-list {
-        padding: 1.5rem 10px;
-        border-bottom: 1px solid @border-color;
+        padding: 0 10px;
+        flex-wrap: wrap;
         li {
+            padding: 1rem 0;
             width: 25%;
             text-align: center;
             line-height: 30px;
             font-size: 13px;
+            border-top: 1px solid @border-color;
             .icon-img {
                 margin: 0 auto;
+            }
+            &:nth-child(1),
+            &:nth-child(2),
+            &:nth-child(3),
+            &:nth-child(4) {
+                border-top: none;
             }
         }
     }

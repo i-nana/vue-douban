@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="login">
         <m-header title="" fixed>
             <a class="btn-back" href="javascript:void(0);" slot="left" @click="$router.go(-1)">
                 <img class="icon-img" src="../../assets/images/ic_bar_back_green.png">
@@ -11,7 +11,7 @@
                 <form class="login-form" method="post" action="javascript: return false;" autocomplete="off" @submit.prevent="login">
                     <input type="text" class="login-input" name="uname" value="" placeholder="手机号/邮箱" v-model="user.name">
                     <input type="password" class="login-input" name="password" placeholder="密码" v-model="user.password">
-                    <button class="login-submit" >登录</button>
+                    <button class="login-submit">登录</button>
                 </form>
                 <p class="login-other">
                     <a class="login-up">注册豆瓣</a>
@@ -21,14 +21,14 @@
             </div>
         </div>
         <div class="footer-login">
-
+    
         </div>
         <div class="alert-tip-auto" :class="{'show': showAlert}">{{alertText}}</div>
     </div>
 </template>
 <script>
 import mHeader from '../../components/header'
-import {mapState, mapMutations} from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 export default {
     name: 'login',
     components: {
@@ -46,35 +46,34 @@ export default {
         }
     },
     mounted() {
-        
+
     },
     methods: {
-        // ...mapMutations([
-        //     'RECORD_USERINFO',
-        // ]),
+        ...mapMutations([
+            'RECORD_USERINFO'
+        ]),
         login(e) {
             let user = this.user;
-            // if(!user.name || user.name.length === 0) {
-            //     this.alertText = "请输入手机号/邮箱";
-            //     this.showAlert = !0;
-            //     this.closeAlert();
-            //     return;
-            // }
-            // if(!user.password || user.password.length === 0) {
-            //     this.alertText = "请输入密码";
-            //     this.showAlert = !0;
-            //     this.closeAlert();
-            //     return;
-            // }
+            if (!user.name || user.name.length === 0) {
+                this.alertText = "请输入手机号/邮箱";
+                this.showAlert = !0;
+                this.closeAlert();
+                return;
+            }
+            if (!user.password || user.password.length === 0) {
+                this.alertText = "请输入密码";
+                this.showAlert = !0;
+                this.closeAlert();
+                return;
+            }
 
-            this.$store.state.user.name = user.name;
-            this.$store.state.user.id = 1304110110;
+            user.id = 1304110110;
             this.RECORD_USERINFO(user);
-           // this.$router.go(-1);
+            this.$router.go(-1);
         },
         closeAlert() {
             let that = this;
-            this.alertTimer = setTimeout(function(){
+            this.alertTimer = setTimeout(function () {
                 that.showAlert = !1;
                 that.alertText = '';
                 clearTimeout(that.alertTimer);
@@ -84,18 +83,21 @@ export default {
 }
 </script>
 <style lang="less">
-#app {
-    background: #fff;
-}
-
-header {
-    border-bottom: none;
-}
-
-.page-content {
+.login {
     position: absolute;
-    height: 100%;
     width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: #fff;
+    header {
+        border-bottom: none;
+    }
+    .page-content {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
 }
 
 .login-main {
@@ -124,7 +126,8 @@ header {
         border: none;
         border-bottom: 1px solid #ccc;
         line-height: 1.5;
-        &:focus, &.focus {
+        &:focus,
+        &.focus {
             padding-bottom: 4px;
             border-bottom: 2px solid #42bd56;
             color: #42bd56;
@@ -162,7 +165,8 @@ header {
         background: #ccc;
     }
 }
-.alert-tip-auto{
+
+.alert-tip-auto {
     position: fixed;
     z-index: -1;
     bottom: 10px;

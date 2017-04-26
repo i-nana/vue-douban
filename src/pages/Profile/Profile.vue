@@ -5,16 +5,15 @@
                 <img class="icon-img" src="../../assets/images/ic_settings.png">
             </a>
         </m-header>
-        <div class="page-content"
-        :class="{'no-user': !isLogin}">
+        <div class="page-content" :class="{'no-user': !isLogin}">
             <div class="profile-cover">
                 <div class="profile-wrapper flex">
                     <div class="profile-avatar">
                         <img src="../../assets/images/avatar_female_100.png">
                     </div>
                     <div class="profile-info flex-fit">
-                        <div  v-if="isLogin">
-                            <h1>葳蕤</h1>
+                        <div v-if="isLogin">
+                            <h1>{{uname}}</h1>
                             <p class="profile-desc">{{ user.slogan }}</p>
                             <p class="profile-fans"><span>关注 35</span><span>被关注 8 </span></p>
                         </div>
@@ -31,93 +30,92 @@
                 <p class="profile-notice-tip">暂无新提醒</p>
             </div>
             <div class="profile-tab">
-                <ul class="profile-tab-list flex">
-                    <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_likes.png">
-                        喜欢
+                <ul class="profile-tab-list flex" @click="myJumping">
+                    <li to="likes">
+                        <img class="icon-img" src="../../assets/images/ic_my_likes.png"> 喜欢
+                    </li>
+                    <li to="note">
+                        <img class="icon-img" src="../../assets/images/ic_my_note.png"> 日记
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_note.png">
-                        日记
+                        <img class="icon-img" src="../../assets/images/ic_my_album.png"> 相册
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_album.png">
-                        相册
+                        <img class="icon-img" src="../../assets/images/ic_my_status.png"> 我的广播
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_status.png">
-                        我的广播
-                    </li>
-                </ul>
-                <ul class="profile-tab-list flex">
-                    <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_movies_tvs.png">
-                        电影·电视
+                        <img class="icon-img" src="../../assets/images/ic_my_movies_tvs.png"> 电影·电视
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_books.png">
-                        读书
+                        <img class="icon-img" src="../../assets/images/ic_my_books.png"> 读书
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_music.png">
-                        音乐
+                        <img class="icon-img" src="../../assets/images/ic_my_music.png"> 音乐
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_events.png">
-                        同城活动
-                    </li>
-                </ul>
-                <ul class="profile-tab-list flex">
-                    <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_doulist.png">
-                        豆列
+                        <img class="icon-img" src="../../assets/images/ic_my_events.png"> 同城活动
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_orders.png">
-                        订单
+                        <img class="icon-img" src="../../assets/images/ic_my_doulist.png"> 豆列
                     </li>
                     <li>
-                        <img class="icon-img" src="../../assets/images/ic_my_wallet.png">
-                        钱包
+                        <img class="icon-img" src="../../assets/images/ic_my_orders.png"> 订单
+                    </li>
+                    <li>
+                        <img class="icon-img" src="../../assets/images/ic_my_wallet.png"> 钱包
                     </li>
                 </ul>
             </div>
-        </div>  
+        </div>
         <tabbar v-model="select"></tabbar>
     </div>
 </template>
 <script>
-	import mHeader from '../../components/header'
-    import tabbar from '../../components/tabbar'
+import mHeader from '../../components/header'
+import tabbar from '../../components/tabbar'
+import { mapState, mapMutations } from 'vuex'
 
-	export default {
-		name: 'profile',
-		components: {
-			mHeader,
-            tabbar
-		},
-        data(){
-            return {
-                select: 'profile',
-                isLogin: false,
-                user: {
-                    name: null,
-                    slogan: null,
-                    avatar: null
-                }
-            }
-        },
-        created() {
-            this.fetchData();
-        },
-        methods: {
-            fetchData() {
-                var uid = this.$store.state.user.id;
-                if(uid) {
-                    this.isLogin = !0;
-                    this.$store.state.login = this.isLogin;
-                }
-            }
+export default {
+    name: 'profile',
+    components: {
+        mHeader,
+        tabbar,
+    },
+    data() {
+        return {
+            select: 'profile',
+            isLogin: false,
+            uname: '',
         }
-	}
+    },
+    computed: {
+        ...mapState([
+            'user'
+        ]),
+    },
+    created() {
+        this.fetchData();
+    },
+    methods: {
+        fetchData() {
+            let uid = this.user.id;
+            let uname = this.user.name;
+            if (uid) {
+                this.isLogin = !0;
+                this.login = this.isLogin;
+            }
+            if (uname) {
+                this.uname = decodeURIComponent(uname);
+            }
+        },
+        myJumping(event) {
+            console.log(event.target, this);
+            // if (this.isLogin) {
+                let toUrl = event.target.getAttribute('to');
+                console.log(toUrl)
+                this.$router.go('/themes/');
+            // }
+        }
+    }
+}
 </script>

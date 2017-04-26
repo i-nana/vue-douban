@@ -5,6 +5,8 @@ import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './actions'
 
+console.log(mutations);
+
 Vue.use(Vuex);
 
 const state = {

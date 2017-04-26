@@ -114,7 +114,8 @@
             fetchData() {
                 var uid = this.$store.state.user.id;
                 if(uid) {
-                    isLogin = !0;
+                    this.isLogin = !0;
+                    this.$store.state.login = this.isLogin;
                 }
             }
         }

@@ -37,28 +37,28 @@
                     <li to="note">
                         <img class="icon-img" src="../../assets/images/ic_my_note.png"> 日记
                     </li>
-                    <li>
+                    <li to="album">
                         <img class="icon-img" src="../../assets/images/ic_my_album.png"> 相册
                     </li>
-                    <li>
+                    <li to="status">
                         <img class="icon-img" src="../../assets/images/ic_my_status.png"> 我的广播
                     </li>
-                    <li>
+                    <li to="tvs">
                         <img class="icon-img" src="../../assets/images/ic_my_movies_tvs.png"> 电影·电视
                     </li>
-                    <li>
+                    <li to="books">
                         <img class="icon-img" src="../../assets/images/ic_my_books.png"> 读书
                     </li>
-                    <li>
+                    <li to="music">
                         <img class="icon-img" src="../../assets/images/ic_my_music.png"> 音乐
                     </li>
-                    <li>
+                    <li to="events">
                         <img class="icon-img" src="../../assets/images/ic_my_events.png"> 同城活动
                     </li>
-                    <li>
+                    <li to="doulist">
                         <img class="icon-img" src="../../assets/images/ic_my_doulist.png"> 豆列
                     </li>
-                    <li>
+                    <li to="orders">
                         <img class="icon-img" src="../../assets/images/ic_my_orders.png"> 订单
                     </li>
                     <li>
@@ -109,12 +109,21 @@ export default {
             }
         },
         myJumping(event) {
-            console.log(event.target, this);
-            // if (this.isLogin) {
-                let toUrl = event.target.getAttribute('to');
-                console.log(toUrl)
-                this.$router.go('/themes/');
-            // }
+            let target = event.target;
+            if (target.tagName.toLowerCase() !== 'li') {
+                target = target.parentNode;
+            }
+            if (target) {
+                if (this.isLogin) {
+                    let toUrl = target.getAttribute('to');
+                    if (toUrl) {
+                        this.$router.push('/my/' + toUrl);
+                    }
+                } else {
+                    this.$router.push('/login/');
+                }
+            }
+
         }
     }
 }

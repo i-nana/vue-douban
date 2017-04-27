@@ -7,7 +7,8 @@ const Movie = r => require.ensure([], () => r(require('../pages/Subject/children
 const Book = r => require.ensure([], () => r(require('../pages/Subject/children/Book')), "Subject")
 const Status = r => require.ensure([], () => r(require('../pages/Status/Status')), 'Status')
 const Group = r => require.ensure([], () => r(require('../pages/Group/Group')), 'Group')
-const Profile = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'Profile')
+const My = r => require.ensure([], () => r(require('../pages/Profile/Profile')), 'My')
+const MyLikes = r => require.ensure([], () => r(require('../pages/Profile/children/Likes')), 'MyLikes')
 const Login = r => require.ensure([], () => r(require('../pages/Profile/Login')), 'Login')
 const Themes = r => require.ensure([], () => r(require('../pages/Index/Themes')), "Themes")
 const Demo = r => require.ensure([], () => r(require('../pages/Demo/statusData')), "Demo")
@@ -46,10 +47,14 @@ export default [{
 	name: 'group',
 	component: Group
 }, {
-	path: '/profile',
-	name: 'profile',
-	component: Profile
+	path: '/my',
+	name: 'my',
+	component: My,
 }, {
+	path: '/my/likes',
+	name: 'myLikes',
+	component: MyLikes,
+},{
 	path: 'index',
 	redirect: '/'
 }, {

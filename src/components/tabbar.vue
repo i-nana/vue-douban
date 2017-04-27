@@ -36,7 +36,7 @@
 			     alt=""
 			     slot="icon-active"> 小组
 		</tabbar-item>
-		<tabbar-item id="profile"
+		<tabbar-item id="my"
 		             isRouter>
 			<img src="../assets/images/ic_tab_profile_normal.png"
 			     alt=""

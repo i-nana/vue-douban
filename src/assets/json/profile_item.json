@@ -13,7 +13,7 @@
 },{
     "id": "status",
     "name": "我的广播",
-ic_my_status.png"
+    "img": "ic_my_status.png"
 },{
     "id": "tvs",
     "name": "电影·电视",

@@ -1,4 +1,9 @@
-> https://segmentfault.com/a/1190000006939687
+> 参考：
+> 1. [Vue.js实践：一个Node.js+mongoDB+Vue.js的博客内容管理系统](https://segmentfault.com/a/1190000006939687)
+    + https://github.com/ciqulover/CMS-of-Blog
+> 2. [Vue.js+Node.js+Mongodb+Express的前后端分离的个人博客](https://github.com/FatDong1/VueBlog)
+
+---
 
 ## 项目构建
 
@@ -25,5 +30,137 @@
 + ES6
 + Sass
 
+在此，我将前后端建为两个项目，实现前后端分离解耦，前后端只需要约定好restful数据接口，和数据存取格式就OK了。
+
 ---
+
+### 后端环境配置
+
+1. 安装 Node.js
+2. 创建后端项目并安装express
+
+``` shell
+mkdir douban-serve && cd douban-serve
+npm init
+npm install express --save
+``` 
+3. Hello World
+
+在主目录下新建入口文件`app.js`，并敲入一下代码：
+
+``` javascript
+// app.js
+var express = require('express');
+var app = express();
+
+// 设置端口为 8333
+var port = process.env.PORT || 8333;
+
+app.get('/', function(req, res) {
+	res.send('Hello World!');
+});
+
+var server = app.listen(port, function() {
+	var host = server.address().address;
+
+	console.log("The app listening at http://%s:%s", host, port);
+});
+```
+在CMD中通过如下命令启动此应用：
+
+``` shell
+node app.js 
+```
+
+至此，我们已经初步创建了一个node.js应用。
+
+4. 通过Express生成器快速创建一个应用
++ 首先，我们需要__全局安装__`express-generator`
+
+``` shell
+npm install express-generator -g
+```
+
++ 创建一个名为`appNode`的应用
+
+``` shell
+warning: the default view engine will not be jade in future releases
+warning: use '--view=jade' or '--help' for additional options
+
+create : appNode
+create : appNode/package.json
+create : appNode/app.js
+create : appNode/public
+create : appNode/routes
+create : appNode/routes/index.js
+create : appNode/routes/users.js
+create : appNode/views
+create : appNode/views/index.jade
+create : appNode/views/layout.jade
+create : appNode/views/error.jade
+create : appNode/bin
+create : appNode/bin/www
+create : appNode/public/stylesheets
+create : appNode/public/stylesheets/style.css
+
+install dependencies:
+> cd appNode && npm install
+
+run the app:
+> SET DEBUG=appnode:* & npm start
+
+create : appNode/public/javascripts
+create : appNode/public/images
+
+```
+
+用该方式创建的应用，目录如下：
+
+``` shell
+|—— bin
+|   └── www
+|—— public  // 静态资源文件夹
+|   |—— images
+|   |—— javascripts
+|   └── stylesheets
+|       └── style.css
+|—— routes
+|   |—— index.js
+|   └── users.js
+|—— views
+|   |—— error.jade
+|   |—— index.jade
+|   └── layout.jade
+|
+|—— app.js  // 入口文件
+└── package.json
+```
+
++ 进入应用目录，安装依赖
+
+``` shell
+cd appNode && npm install
+```
+
++ 启动应用
+
+``` shell
+SET DEBUG=appnode:* & npm start
+```
+
+__🍀 在此，我将采用第一种方式创建应用！__
+
+---
+
+### 🍀
+
+- 安装依赖工具
+    + serve-favicon : 请求网页的logo
+    + path : 处理文件和目录路径的工具，详见[文档](https://nodejs.org/api/path.html)
+    + cookie-parser : 
+    + bodyParser :
+    + logger
+
+- 创建静态资源文件夹 public，放入网站logo：favicon.ico。
+- 创建路由文件夹 routes，并创建新文件：index.js
 

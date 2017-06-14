@@ -161,6 +161,67 @@ __🍀 在此，我将采用第一种方式创建应用！__
     + bodyParser :
     + logger
 
-- 创建静态资源文件夹 public，放入网站logo：favicon.ico。
-- 创建路由文件夹 routes，并创建新文件：index.js
+//// 放置，待整理
+express: web 框架
+express-session: session 中间件
+connect-mongo: 将 session 存储于 mongodb，结合 express-session 使用
+connect-flash: 页面通知提示的中间件，基于 session 实现
+ejs: 模板
+express-formidable: 接收表单及文件的上传中间件
+config-lite: 读取配置文件
+marked: markdown 解析
+moment: 时间格式化
+mongolass: mongodb 驱动
+objectid-to-timestamp: 根据 ObjectId 生成时间戳
+sha1: sha1 加密，用于密码加密
+winston: 日志
+express-winston: 基于 winston 的用于 express 的日志中间件
+////
 
+修改项目目录结构如下：
+
+``` shell
+|—— app
+|   |—— controllers     // 数据控制
+|       |—— index.js    
+|       └── Totoro.js   // 为前端提供的数据接口，我们统一为 /totoro/...
+|   |—— model           // 输出数据模块 
+|   └── schemas         // 定义数据结构
+|
+|—— public              // 静态资源文件夹
+|   |—— images
+|   |—— javascripts
+|   └── stylesheets
+|       └── style.css
+|
+|—— routes
+|   └── index.js        // 路由
+|
+|—— views               // 视图
+|
+|—— app.js  // 入口文件
+└── package.json
+```
+
+我们先定义一个接口：当请求**/totoro/**时返回“Hello world”。
+
++ 首先，先在`app/controllers/Totoro.js`设置请求输出
+``` javascript
+exports.index = function(req, res) {
+	res.status(200).send('ヾ(◍°∇°◍)ﾉﾞ Hello World.')
+}
+```
+
++ 修改路由文件 `routes/index.js`
+
+``` javascript
+var Index = require('../app/controllers/index');
+var Totoro = require('../app/controllers/Totoro')
+
+module.exports = function (app) {
+	app.post('/', Index.index);
+	app.post('/totoro', Totoro.index);
+};
+```
+
+详细代码请见：

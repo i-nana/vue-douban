@@ -29,6 +29,7 @@
 <script>
 import mHeader from '../../components/header'
 import { mapState, mapMutations } from 'vuex'
+import Vue from 'vue'
 export default {
     name: 'login',
     components: {
@@ -48,7 +49,17 @@ export default {
     mounted() {
 
     },
+    created() {
+        this.demo();
+    },
     methods: {
+        demo() {
+            this.$http.post('/totoro/').then(response => {
+                console.log(response.body);
+            }, response => {
+                // error callback
+            });
+        },
         ...mapMutations([
             'RECORD_USERINFO'
         ]),

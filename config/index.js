@@ -35,7 +35,15 @@ module.exports = {
 					'^/api': ''
 				}
 			},
+			'/totoro': {
+				target: 'http://localhost:8333',
+				changeOrigin: true,
+				pathRewrite: {
+					'^/totoro': '/totoro'
+				}
+			}
 		},
+
 		// CSS Sourcemaps off by default because relative paths are "buggy"
 		// with this option, according to the CSS-Loader README
 		// (https://github.com/webpack/css-loader#sourcemaps)

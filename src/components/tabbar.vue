@@ -51,7 +51,7 @@
 <script>
 import tabbarItem from './tabbar-item';
 export default {
-	props: ['value'],
+	// props: ['value'],
 	components: {
 		tabbarItem
 	},
